@@ -1,11 +1,9 @@
 using Godot;
 using System;
 
-public partial class Bullet : RigidBody2D
+public partial class Bullet : Area2D
 {
-	[Export]
 	public Vector2 Direction { get; set; }
-	[Export]
 	public double Speed { get; set; }
 
 	// Called when the node enters the scene tree for the first time.
@@ -16,16 +14,20 @@ public partial class Bullet : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position += Vector2.Right;
-		Position = new Vector2(
-			x: (float)(Position.X + (Speed * delta)),
-			y: (float)(Position.Y + (Speed * delta))
+        GlobalPosition += Vector2.Right;
+		GlobalPosition = new Vector2(
+			x: (float)(GlobalPosition.X + (Speed * delta)),
+			y: (float)(GlobalPosition.Y)
 		);
 
-	}
+    }
 
-	public void OnBodyEntered()
+    public void OnBodyEntered(Node body)
 	{
-		QueueFree();
+		if (body.GetClass() != "Player")
+		{
+			QueueFree();
+		};
+		
 	}
 }

@@ -60,9 +60,11 @@ public partial class BaseWeapon : Node2D, IWeapon
     private void OnHitTimerTimeout()
     {
         var projectile = Projectile.Instantiate<Bullet>();
-        projectile.Speed = 600;
-        projectile.Direction = new Vector2(5.0f, 0.0f);
-
+        projectile.Speed = 500;
+        projectile.Position = GetNode<Marker2D>("ProjectileSpawnPoint").Position;
+        projectile.CollisionLayer = 1;
+        projectile.Scale = new Vector2(5, 5);
+        
         AddChild(projectile);
     }
 }
