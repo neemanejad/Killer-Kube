@@ -12,8 +12,9 @@ script = ExtResource("1_w27py")
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_uaney")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.192157, 0.188235, 0.2, 1)
-metadata/_edit_use_anchors_ = true
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
