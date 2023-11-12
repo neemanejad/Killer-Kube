@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : Area2D
+public partial class Player : CharacterBody2D
 {
 	[Export]
 	public int Speed { get; set; } = 400;
@@ -20,7 +20,7 @@ public partial class Player : Area2D
 		ProcessMovementInput(delta);
 	}
 
-	private void ProcessMovementInput(double delta)
+    private void ProcessMovementInput(double delta)
 	{
 		var velocity = Vector2.Zero;
 
@@ -49,8 +49,10 @@ public partial class Player : Area2D
 			velocity = velocity.Normalized() * Speed;
 		}
 
-		Position += velocity * (float)delta;
-		var camera = GetNode<Camera2D>("Camera2D");
-		camera.LookAt(Position);
-	}
+		Velocity = velocity;
+        MoveAndSlide();
+
+        var camera = GetNode<Camera2D>("Camera2D");
+        camera.LookAt(Position);
+    }
 }

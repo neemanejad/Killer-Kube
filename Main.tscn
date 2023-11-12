@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkftomnbgpac2"]
 
-[ext_resource type="PackedScene" uid="uid://cd42m2v2fpp8k" path="res://TestArea.tscn" id="1_sp1v3"]
+[ext_resource type="PackedScene" uid="uid://cd42m2v2fpp8k" path="res://FightArea.tscn" id="1_sp1v3"]
 [ext_resource type="PackedScene" uid="uid://cf45t1wktpddl" path="res://Player.tscn" id="2_wsb7v"]
 
 [node name="Main" type="Node"]
