@@ -4,6 +4,12 @@ using System.Diagnostics.CodeAnalysis;
 
 public partial class BaseWeapon : Node2D, IWeapon
 {
+    public enum WeaponDirection
+    {
+        Left,
+        Right
+    }
+
     [Export]
     public string WeaponName { get; set; }
     [Export]
@@ -14,6 +20,7 @@ public partial class BaseWeapon : Node2D, IWeapon
     public double WeaponDamageMultiplier { get; set; }
     [Export]
     public PackedScene Projectile { get; set; }
+    public WeaponDirection Direction { get; set; } = WeaponDirection.Right;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -64,7 +71,19 @@ public partial class BaseWeapon : Node2D, IWeapon
         projectile.Position = GetNode<Marker2D>("ProjectileSpawnPoint").Position;
         projectile.CollisionLayer = 1;
         projectile.Scale = new Vector2(5, 5);
+        projectile.Direction = GetGlobalMousePosition();
         
         AddChild(projectile);
+    }
+
+    public void PointWeaponAtLocation(Vector2 location)
+    {
+        LookAt(location);
+    }
+
+    public void FlipV()
+    {
+        var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        sprite.FlipV = !sprite.FlipV;
     }
 }

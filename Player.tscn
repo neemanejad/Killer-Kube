@@ -1,30 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf45t1wktpddl"]
+[gd_scene load_steps=3 format=3 uid="uid://cf45t1wktpddl"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_5iugs"]
-[ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://BaseWeapon.tscn" id="2_ncnh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msq53"]
-size = Vector2(39.9797, 40)
+size = Vector2(47.9525, 48)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5iugs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.99035, 4)
+position = Vector2(-7.15256e-07, 0)
 scale = Vector2(1.00099, 1)
 shape = SubResource("RectangleShape2D_msq53")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -24.0
-offset_top = -16.0
-offset_right = 16.0
+offset_top = -24.0
+offset_right = 24.0
 offset_bottom = 24.0
 color = Color(0.603922, 0, 0.0823529, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-3.5, 4.5)
 zoom = Vector2(1.4, 1.4)
 
-[node name="SmallSubMachineGun" parent="." instance=ExtResource("2_ncnh2")]
-position = Vector2(33, 4)
-scale = Vector2(0.15, 0.15)
+[node name="WeaponLocation" type="Marker2D" parent="."]
