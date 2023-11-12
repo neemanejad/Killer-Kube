@@ -26,5 +26,5 @@ position = Vector2(-3.5, 4.5)
 zoom = Vector2(1.4, 1.4)
 
 [node name="SmallSubMachineGun" parent="." instance=ExtResource("2_ncnh2")]
-position = Vector2(40, 0)
+position = Vector2(33, 4)
 scale = Vector2(0.15, 0.15)
