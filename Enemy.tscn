@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dakjh20k2065d"]
+[gd_scene load_steps=3 format=3 uid="uid://dakjh20k2065d"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_grxfv"]
+[ext_resource type="Script" path="res://Enemy.cs" id="1_8xye7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v80lk"]
+size = Vector2(32, 32)
 
 [node name="Enemy" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_8xye7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_grxfv")
+shape = SubResource("RectangleShape2D_v80lk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.309804, 0.00392157, 0.576471, 1)
