@@ -1,15 +1,10 @@
 using Godot;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using static IWeapon;
 
 public partial class BaseWeapon : Node2D, IWeapon
 {
-    public enum WeaponDirection
-    {
-        Left,
-        Right
-    }
-
     [Export]
     public string WeaponName { get; set; }
     [Export]
@@ -53,28 +48,27 @@ public partial class BaseWeapon : Node2D, IWeapon
         LookAt(location);
     }
 
-    public void Flip()
+    public void FlipWeaponRight()
     {
-        Scale = new Vector2(Scale.X, -Scale.Y);
-        Direction = Direction == WeaponDirection.Left ? WeaponDirection.Right : WeaponDirection.Left;
+        Scale = Scale.Y <= 0 ? new Vector2(Scale.X, -Scale.Y) : Scale;
+        Direction = WeaponDirection.Right;
     }
 
-    public void HandleWeaponAction()
+    public void FlipWeaponLeft()
     {
-        var weaponSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        if (Input.IsActionPressed("fire_weapon"))
-        {
-            weaponSprite.Play("shoot");
-            var hitTimer = GetNode<Timer>("HitTimer");
-            if (hitTimer.TimeLeft == 0)
-            {
-                hitTimer.Start();
-            }
-        }
-        else
-        {
-            weaponSprite.Play("idle");
-            GetNode<Timer>("HitTimer").Stop();
-        }
+        Scale = Scale.Y >= 0 ? new Vector2(Scale.X, -Scale.Y) : Scale;
+        Direction = WeaponDirection.Left;
+    }
+
+    public void EnableWeaponAction()
+    {
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("shoot");
+        GetNode<Timer>("HitTimer").Start();
+    }
+
+    public void DisableWeaponAction()
+    {
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
+        GetNode<Timer>("HitTimer").Stop();
     }
 }

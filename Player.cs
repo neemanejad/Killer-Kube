@@ -1,16 +1,21 @@
 using Godot;
+using Nova.Scripts.Character;
 using System;
 using System.Transactions;
+using static IWeapon;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, ICharacter
 {
 	[Export]
 	public int Speed { get; set; } = 400;
 	public PackedScene WeaponScene { get; set; }
 	public BaseWeapon Weapon { get; set; }
 	public Marker2D WeaponLocation { get; set; }
+    public PackedScene HealthBar { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public Marker2D HealthBarLocation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public double HealthPoints { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-	public Vector2 ScreenSize; 
+    public Vector2 ScreenSize; 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,6 +28,8 @@ public partial class Player : CharacterBody2D
 		Weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
 		Weapon.Scale = new Vector2((float)0.2, (float)0.2);
 		AddChild(Weapon);
+
+		EnableAttack();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +37,6 @@ public partial class Player : CharacterBody2D
 	{
 		ProcessMovementInput(delta);
 		ProcessMouseMovement(delta);
-		ProcessMouseInput(delta);
 	}
 
     private void ProcessMovementInput(double delta)
@@ -77,30 +83,35 @@ public partial class Player : CharacterBody2D
 
 		//// Check if weapon needs to be flipped based on the mouse location
 		var relativeMouseLocation = Position.DirectionTo(GetGlobalMousePosition());
-		if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Left)
+		if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == WeaponDirection.Left)
 		{
             // Mouse moving from left to right below the player
-            Weapon.Flip();
+            Weapon.FlipWeaponRight();
         }
-		else if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y <= 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Left)
+		else if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y <= 0 && Weapon.Direction == WeaponDirection.Left)
 		{
             // Mouse moving from left to right above the player
-            Weapon.Flip();
+            Weapon.FlipWeaponRight();
         }
-		else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Right)
+		else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == WeaponDirection.Right)
 		{
             // Mouse moving from right to left below the player
-            Weapon.Flip();
+            Weapon.FlipWeaponLeft();
         }
-		else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y < 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Right)
+		else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y < 0 && Weapon.Direction == WeaponDirection.Right)
 		{
 			// Mouse moving from right to left above the player
-			Weapon.Flip();
+			Weapon.FlipWeaponLeft();
 		}
 	}
 
-	public void ProcessMouseInput(double delta)
-	{
-		Weapon.HandleWeaponAction();
-	}
+    public void EnableAttack()
+    {
+		Weapon.EnableWeaponAction();
+    }
+
+    public void DisableAttack()
+    {
+		Weapon.DisableWeaponAction();
+    }
 }
