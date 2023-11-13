@@ -14,10 +14,9 @@ public partial class Bullet : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        GlobalPosition += Direction.Normalized();
 		GlobalPosition = new Vector2(
-			x: (float)(GlobalPosition.X + (Speed * delta)),
-			y: (float)(GlobalPosition.Y)
+			x: (float)(GlobalPosition.X + (Speed * delta * Direction.Normalized().X)),
+			y: (float)(GlobalPosition.Y + (Speed * delta * Direction.Normalized().Y))
 		);
 
     }

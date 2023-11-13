@@ -70,7 +70,7 @@ public partial class Player : CharacterBody2D
 
     private void ProcessMouseMovement(double delta)
     {
-		Weapon.PointWeaponAtLocation(GetGlobalMousePosition());
+		Weapon.PointWeaponAtLocation(GlobalPosition.DirectionTo(GetGlobalMousePosition()) + Weapon.GlobalPosition);
 		WeaponLocation.Position = Position.DirectionTo(GetGlobalMousePosition()) * 50;
 		Weapon.Position = WeaponLocation.Position;
 
