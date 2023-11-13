@@ -32,37 +32,8 @@ public partial class BaseWeapon : Node2D, IWeapon
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        ProcessFireInput(delta);
+        
 	}
-
-    public void GetDamage()
-    {
-        throw new NotImplementedException();
-    }
-
-    public double CalculateDamage()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void ProcessFireInput(double delta)
-    {
-        var weaponSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        if (Input.IsActionPressed("fire_weapon"))
-        {
-            weaponSprite.Play("shoot");
-            var hitTimer = GetNode<Timer>("HitTimer");
-            if (hitTimer.TimeLeft == 0)
-            {
-                hitTimer.Start();
-            }
-        }
-        else
-        {
-            weaponSprite.Play("idle");
-            GetNode<Timer>("HitTimer").Stop();
-        }
-    }
 
     private void OnHitTimerTimeout()
     {
@@ -82,9 +53,28 @@ public partial class BaseWeapon : Node2D, IWeapon
         LookAt(location);
     }
 
-    public void FlipV()
+    public void Flip()
     {
-        var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        sprite.FlipV = !sprite.FlipV;
+        Scale = new Vector2(Scale.X, -Scale.Y);
+        Direction = Direction == WeaponDirection.Left ? WeaponDirection.Right : WeaponDirection.Left;
+    }
+
+    public void HandleWeaponAction()
+    {
+        var weaponSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        if (Input.IsActionPressed("fire_weapon"))
+        {
+            weaponSprite.Play("shoot");
+            var hitTimer = GetNode<Timer>("HitTimer");
+            if (hitTimer.TimeLeft == 0)
+            {
+                hitTimer.Start();
+            }
+        }
+        else
+        {
+            weaponSprite.Play("idle");
+            GetNode<Timer>("HitTimer").Stop();
+        }
     }
 }

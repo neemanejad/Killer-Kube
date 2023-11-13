@@ -9,5 +9,5 @@ public interface IWeapon
 	public double WeaponDamageMultiplier { get; set; }
 	public PackedScene Projectile { get; set; }
 
-	public double CalculateDamage();
+	public void HandleWeaponAction();
 }

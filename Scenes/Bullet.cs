@@ -23,10 +23,6 @@ public partial class Bullet : Area2D
 
     public void OnBodyEntered(Node body)
 	{
-		if (body.GetClass() != "Player")
-		{
-			QueueFree();
-		};
-		
+		QueueFree();	
 	}
 }
