@@ -11,8 +11,8 @@ public partial class Player : CharacterBody2D, ICharacter
 	public PackedScene WeaponScene { get; set; }
 	public BaseWeapon Weapon { get; set; }
 	public Marker2D WeaponLocation { get; set; }
-    public PackedScene HealthBar { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public Marker2D HealthBarLocation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public HealthBar HealthBar { get; set; }
+    public Marker2D HealthBarLocation { get; set; }
     public double HealthPoints { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     public Vector2 ScreenSize; 
@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D, ICharacter
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Initialize weapon
 		WeaponLocation = GetNode<Marker2D>("WeaponLocation");
 		WeaponLocation.Position = new Vector2(Position.X, Position.Y);
 		ScreenSize = GetViewportRect().Size;
@@ -28,6 +29,11 @@ public partial class Player : CharacterBody2D, ICharacter
 		Weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
 		Weapon.Scale = new Vector2((float)0.2, (float)0.2);
 		AddChild(Weapon);
+
+		// Initialize health bar
+		HealthBar = GetNode<HealthBar>("HealthBar");
+		HealthBar.Health = 100;
+		HealthBar.MaxHealth = 100;
 
 		EnableAttack();
 	}
@@ -114,4 +120,9 @@ public partial class Player : CharacterBody2D, ICharacter
     {
 		Weapon.DisableWeaponAction();
     }
+
+    public void PlayerLostAllHealth()
+	{
+		QueueFree();
+	}
 }

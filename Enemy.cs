@@ -8,7 +8,7 @@ public partial class Enemy : RigidBody2D, ICharacter
     public PackedScene WeaponScene { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public BaseWeapon Weapon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public Marker2D WeaponLocation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public PackedScene HealthBar { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public HealthBar HealthBar { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public Marker2D HealthBarLocation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public double HealthPoints { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

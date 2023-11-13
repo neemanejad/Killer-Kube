@@ -13,7 +13,7 @@ namespace Nova.Scripts.Character
         public PackedScene WeaponScene { get; set; }
         public BaseWeapon Weapon { get; set; }
         public Marker2D WeaponLocation { get; set; }
-        public PackedScene HealthBar { get; set; }
+        public HealthBar HealthBar { get; set; }
         public Marker2D HealthBarLocation { get; set; }
         public double HealthPoints { get; set; }
         public void EnableAttack();
