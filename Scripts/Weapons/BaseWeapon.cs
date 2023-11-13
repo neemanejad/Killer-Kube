@@ -71,7 +71,7 @@ public partial class BaseWeapon : Node2D, IWeapon
         projectile.Position = GetNode<Marker2D>("ProjectileSpawnPoint").Position;
         projectile.CollisionLayer = 1;
         projectile.Scale = new Vector2(5, 5);
-        projectile.Direction = GetGlobalMousePosition().Normalized();
+        projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition());
         
         AddChild(projectile);
     }
