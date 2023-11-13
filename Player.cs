@@ -78,27 +78,27 @@ public partial class Player : CharacterBody2D
 		var relativeMouseLocation = Position.DirectionTo(GetGlobalMousePosition());
 		if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Left)
 		{
-			// Mouse moving from left to right below the player
-			Weapon.FlipV();
+            // Mouse moving from left to right below the player
+            Weapon.Scale = new Vector2(Weapon.Scale.X, -Weapon.Scale.Y);
 			Weapon.Direction = BaseWeapon.WeaponDirection.Right;
 		}
 		else if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y <= 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Left)
 		{
 			// Mouse moving from left to right above the player
-			Weapon.FlipV();
-			Weapon.Direction = BaseWeapon.WeaponDirection.Right;
+            Weapon.Scale = new Vector2(Weapon.Scale.X, -Weapon.Scale.Y);
+            Weapon.Direction = BaseWeapon.WeaponDirection.Right;
 		}
 		else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Right)
 		{
 			// Mouse moving from right to left below the player
-			Weapon.FlipV();
-			Weapon.Direction = BaseWeapon.WeaponDirection.Left;
+            Weapon.Scale = new Vector2(Weapon.Scale.X, -Weapon.Scale.Y);
+            Weapon.Direction = BaseWeapon.WeaponDirection.Left;
 		}
 		else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y < 0 && Weapon.Direction == BaseWeapon.WeaponDirection.Right)
 		{
 			// Mouse moving from right to left above the player
-			Weapon.FlipV();
-			Weapon.Direction = BaseWeapon.WeaponDirection.Left;
+            Weapon.Scale = new Vector2(Weapon.Scale.X, -Weapon.Scale.Y);
+            Weapon.Direction = BaseWeapon.WeaponDirection.Left;
 		}
 	}
 }
