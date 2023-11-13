@@ -31,4 +31,12 @@ public partial class Enemy : RigidBody2D, ICharacter
     {
         throw new NotImplementedException();
     }
+
+    public void OnBodyEntered(Node body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            GD.Print("Player Entered");
+        }
+    }
 }
