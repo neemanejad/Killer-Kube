@@ -8,6 +8,6 @@ public interface IWeapon
 	public double WeaponHitRate { get; set; }
 	public double WeaponDamageMultiplier { get; set; }
 	public PackedScene Projectile { get; set; }
-
-	public void HandleWeaponAction();
+	public void EnableWeaponAction();
+	public void DisableWeaponAction();
 }
