@@ -68,12 +68,12 @@ public partial class BaseWeapon : Node2D, IWeapon
     {
         var projectile = Projectile.Instantiate<Bullet>();
         projectile.Speed = 500;
-        projectile.Position = GetNode<Marker2D>("ProjectileSpawnPoint").Position;
+        projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
         projectile.CollisionLayer = 1;
-        projectile.Scale = new Vector2(5, 5);
+        projectile.Scale = new Vector2(1, 1);
         projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition());
         
-        AddChild(projectile);
+        GetTree().Root.AddChild(projectile);
     }
 
     public void PointWeaponAtLocation(Vector2 location)
