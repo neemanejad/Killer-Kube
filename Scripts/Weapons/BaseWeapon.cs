@@ -35,7 +35,6 @@ public partial class BaseWeapon : Node2D, IWeapon
         var projectile = Projectile.Instantiate<Bullet>();
         projectile.Speed = 500;
         projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
-        projectile.CollisionLayer = 1;
         projectile.Scale = new Vector2(1, 1);
         projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
         projectile.Rotation = Rotation;

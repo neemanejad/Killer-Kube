@@ -2,9 +2,10 @@ using Godot;
 using Nova.Scripts.Character;
 using System;
 
-public partial class Enemy : RigidBody2D, ICharacter
+public partial class Enemy : Node2D, ICharacter
 {
-    public int Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public int Speed { get; set; }
+    public Player Target { get; set; }
     public PackedScene WeaponScene { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public BaseWeapon Weapon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public Marker2D WeaponLocation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -20,6 +21,7 @@ public partial class Enemy : RigidBody2D, ICharacter
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        //GlobalPosition += (GlobalPosition.DirectionTo(Target.Position) * (float)delta * Speed);
 	}
 
     public void EnableAttack()
