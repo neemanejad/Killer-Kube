@@ -45,7 +45,7 @@ public partial class Player : CharacterBody2D, ICharacter
 		ProcessMouseMovement(delta);
 	}
 
-    private void ProcessMovementInput(double delta)
+	private void ProcessMovementInput(double delta)
 	{
 		var velocity = Vector2.Zero;
 

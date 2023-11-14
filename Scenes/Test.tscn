@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c37gkt48vlwou"]
+
+[ext_resource type="PackedScene" uid="uid://dfciapigyl2lg" path="res://Scenes/Character.tscn" id="1_rbo4m"]
+[ext_resource type="PackedScene" uid="uid://ch6jrccejfoll" path="res://Scenes/Controller.tscn" id="2_7bsk6"]
+[ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/BaseWeapon.tscn" id="2_nkrcm"]
+[ext_resource type="Script" path="res://Scripts/Controller.cs" id="4_kchmo"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_rbo4m")]
+WeaponScene = ExtResource("2_nkrcm")
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+
+[node name="Controller" parent="." instance=ExtResource("2_7bsk6")]
+script = ExtResource("4_kchmo")

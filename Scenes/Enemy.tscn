@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dakjh20k2065d"]
+[gd_scene load_steps=4 format=3 uid="uid://dakjh20k2065d"]
 
-[ext_resource type="Script" path="res://Enemy.cs" id="1_8xye7"]
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_txdwj"]
+[ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_3w08q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfsr8"]
 size = Vector2(32, 32)
 
 [node name="Enemy" type="Area2D"]
-script = ExtResource("1_8xye7")
+script = ExtResource("1_txdwj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -16.0
@@ -20,6 +21,9 @@ wait_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vfsr8")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_3w08q")]
+position = Vector2(0, -40)
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
