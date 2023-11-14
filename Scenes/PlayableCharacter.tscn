@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/BaseWeapon.tscn" id="2_nkrcm"]
 [ext_resource type="Script" path="res://Scripts/Controller.cs" id="4_kchmo"]
 
-[node name="Test" type="Node2D"]
+[node name="PlayableCharacter" type="Node2D"]
 
 [node name="Character" parent="." instance=ExtResource("1_rbo4m")]
 WeaponScene = ExtResource("2_nkrcm")
