@@ -25,4 +25,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_fl5sd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_321ix")
 value = 100.0
 
-[connection signal="changed" from="ProgressBar" to="." method="OnHealthChanged"]
+[connection signal="value_changed" from="ProgressBar" to="." method="OnHealthChanged"]

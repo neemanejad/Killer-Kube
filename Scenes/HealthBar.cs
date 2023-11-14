@@ -32,12 +32,11 @@ public partial class HealthBar : Node
 		Health += amount;
 	}
 
-    public void OnHealthChanged()
+    public void OnHealthChanged(float value)
 	{
 		if (Health <= 0)
 		{
 			EmitSignal(SignalName.LostAllHealth);
-			QueueFree();
 		}
 	}
 }

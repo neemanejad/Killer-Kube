@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Bullet : Node2D
+public partial class Bullet : Area2D
 {
 	public Vector2 Direction { get; set; }
 	public double Speed { get; set; }
@@ -23,6 +23,11 @@ public partial class Bullet : Node2D
 
     public void OnBodyEntered(Node body)
 	{
-		QueueFree();	
+		//QueueFree();	
+	}
+
+    public void OnScreenExited()
+	{
+		QueueFree();
 	}
 }
