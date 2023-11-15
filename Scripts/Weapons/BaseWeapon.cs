@@ -38,6 +38,7 @@ public partial class BaseWeapon : Node2D, IWeapon
         projectile.Scale = new Vector2(1, 1);
         projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
         projectile.Rotation = Rotation;
+        projectile.WeaponOfOrigin = this;
         
         GetTree().Root.AddChild(projectile);
     }

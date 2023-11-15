@@ -5,6 +5,7 @@ public partial class Bullet : Area2D
 {
 	public Vector2 Direction { get; set; }
 	public double Speed { get; set; }
+	public BaseWeapon WeaponOfOrigin { get; set; }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
