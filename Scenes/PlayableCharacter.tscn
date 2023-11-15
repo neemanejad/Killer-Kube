@@ -9,6 +9,7 @@
 
 [node name="Character" parent="." instance=ExtResource("1_rbo4m")]
 WeaponScene = ExtResource("2_nkrcm")
+HealthPoints = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 
