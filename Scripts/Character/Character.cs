@@ -26,6 +26,8 @@ public partial class Character : CharacterBody2D, ICharacter
         Weapon = WeaponScene.Instantiate<BaseWeapon>();
         Weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
         Weapon.Scale = new Vector2((float)0.2, (float)0.2);
+        Weapon.WeaponDamage = 2;
+        Weapon.WeaponHitRate = 0.05;
         AddChild(Weapon);
 
         // Initialize health bar

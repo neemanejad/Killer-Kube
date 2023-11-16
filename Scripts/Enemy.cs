@@ -45,7 +45,8 @@ public partial class Enemy : Area2D, ICharacter
     {
         if (area.IsInGroup("PlayerProjectile"))
         {
-            //HealthBar.RemoveHealthPoints(area.);
+            var bullet = area.GetNode<Bullet>(".");
+            HealthBar.RemoveHealthPoints(bullet.WeaponOfOrigin.WeaponDamage);
             area.QueueFree();
         }
     }
@@ -68,5 +69,10 @@ public partial class Enemy : Area2D, ICharacter
     public void OnHitTimerTimeout()
     {
         Target.GetNode<HealthBar>("HealthBar").RemoveHealthPoints(5);
+    }
+
+    public void PlayerLostAllHealth()
+    {
+        QueueFree();
     }
 }
