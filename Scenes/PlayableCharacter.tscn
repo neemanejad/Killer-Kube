@@ -1,15 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://c37gkt48vlwou"]
+[gd_scene load_steps=5 format=3 uid="uid://dfciapigyl2lg"]
 
-[ext_resource type="PackedScene" uid="uid://dfciapigyl2lg" path="res://Scenes/Character.tscn" id="1_rbo4m"]
-[ext_resource type="PackedScene" uid="uid://ch6jrccejfoll" path="res://Scenes/Controller.tscn" id="2_7bsk6"]
+[ext_resource type="Script" path="res://Scripts/PlayableCharacter.cs" id="1_ktc35"]
+[ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_lu26h"]
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/BaseWeapon.tscn" id="2_nkrcm"]
 
-[node name="PlayableCharacter" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
+size = Vector2(47.9525, 48)
 
-[node name="Character" parent="." instance=ExtResource("1_rbo4m")]
+[node name="PlayableCharacter" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_ktc35")
 WeaponScene = ExtResource("2_nkrcm")
 HealthPoints = 100.0
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.603922, 0, 0.0823529, 1)
 
-[node name="Controller" parent="." instance=ExtResource("2_7bsk6")]
+[node name="WeaponLocation" type="Marker2D" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("2_lu26h")]
+position = Vector2(0, -56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.15256e-07, 0)
+scale = Vector2(1.00099, 1)
+shape = SubResource("RectangleShape2D_yiak4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="LostAllHealth" from="HealthBar" to="." method="PlayerLostAllHealth"]
