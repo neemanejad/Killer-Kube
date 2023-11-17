@@ -13,3 +13,4 @@ position = Vector2(168, 56)
 Speed = 150
 
 [node name="PlayableCharacter" parent="." instance=ExtResource("3_c87h4")]
+Speed = 500

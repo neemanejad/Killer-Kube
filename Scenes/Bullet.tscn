@@ -26,5 +26,7 @@ offset_bottom = 2.0
 color = Color(0.635294, 0.501961, 0, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 4.76837e-07)
+position = Vector2(-4.17233e-07, 5.96046e-08)
 scale = Vector2(0.5, 0.3)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

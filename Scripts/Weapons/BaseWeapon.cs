@@ -33,7 +33,7 @@ public partial class BaseWeapon : Node2D, IWeapon
     private void OnHitTimerTimeout()
     {
         var projectile = Projectile.Instantiate<Bullet>();
-        projectile.Speed = 500;
+        projectile.Speed = 600;
         projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
         projectile.Scale = new Vector2(1, 1);
         projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
