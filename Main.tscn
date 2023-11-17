@@ -10,5 +10,6 @@
 
 [node name="Enemy" parent="." instance=ExtResource("3_76nrd")]
 position = Vector2(168, 56)
+Speed = 150
 
 [node name="PlayableCharacter" parent="." instance=ExtResource("3_c87h4")]

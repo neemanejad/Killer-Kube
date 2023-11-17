@@ -1,11 +1,14 @@
 using Godot;
+using Nova.Scripts;
 using Nova.Scripts.Character;
 using System;
 
 public partial class Enemy : Area2D, ICharacter
 {
+    [Export]
     public int Speed { get; set; }
     public Node Target { get; set; }
+    [Export]
     public PackedScene WeaponScene { get; set; }
     public BaseWeapon Weapon { get; set; }
     public Marker2D WeaponLocation { get; set; }
@@ -17,19 +20,20 @@ public partial class Enemy : Area2D, ICharacter
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
         HitTimer = GetNode<Timer>("HitTimer");
         HealthBar = GetNode<HealthBar>("HealthBar");
         HealthBar.Health = HealthPoints;
         HealthBar.MaxHealth = HealthPoints;
-	}
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-        //GlobalPosition += (GlobalPosition.DirectionTo(Target.Position) * (float)delta * Speed);
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+        if (Globals.Target == null) return;
 
-	}
+        GlobalPosition += (GlobalPosition.DirectionTo(Globals.Target.GlobalPosition) * (float)delta * Speed);
+    }
 
     public void EnableAttack()
     {

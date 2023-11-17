@@ -1,4 +1,5 @@
 using Godot;
+using Nova.Scripts;
 using static IWeapon;
 
 public partial class PlayableCharacter : Character
@@ -22,6 +23,9 @@ public partial class PlayableCharacter : Character
         HealthBar.MaxHealth = HealthPoints;
 
         EnableAttack();
+
+        // Set global variable so all enemies can track the player's position
+        Globals.Target = this;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
