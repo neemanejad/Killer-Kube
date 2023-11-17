@@ -7,6 +7,7 @@
 [node name="Main" type="Node"]
 
 [node name="FightArea" parent="." instance=ExtResource("1_sp1v3")]
+scale = Vector2(2.825, 1.91)
 
 [node name="Enemy" parent="." instance=ExtResource("3_76nrd")]
 position = Vector2(168, 56)
