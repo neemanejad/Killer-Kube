@@ -42,4 +42,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EnemySpawnRate" type="Timer" parent="."]
 
+[node name="SurvivalTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
+[connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]

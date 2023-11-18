@@ -24,11 +24,11 @@ text = "Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="SurvivalTimeLabel" type="Label" parent="."]
 layout_mode = 1
 offset_right = 104.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("1_acgod")
-text = "0:00"
+text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
