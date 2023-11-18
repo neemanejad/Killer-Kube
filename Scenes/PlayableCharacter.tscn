@@ -30,5 +30,6 @@ scale = Vector2(1.00099, 1)
 shape = SubResource("RectangleShape2D_yiak4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 2.0
 
 [connection signal="LostAllHealth" from="HealthBar" to="." method="PlayerLostAllHealth"]
