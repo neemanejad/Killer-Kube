@@ -1,5 +1,6 @@
 using Godot;
 using Nova.Scripts;
+using Nova.Scripts.Character;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,20 +15,22 @@ public partial class LevelLogic : Node, ILevel
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
+        GetTree().Root.Connect(Viewport.SignalName.SizeChanged, new Callable(this, MethodName.ViewportSizeChanged));
+
         EnemySpawnPath = GetNode<PathFollow2D>("PlayableCharacter/EnemySpawnPath/PathFollow2D");
         EnemySpawnRate = GetNode<Timer>("EnemySpawnRate");
 
         EnemySpawnRate.WaitTime = 3;
 
         StartSpawningEnemies();
-	}
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
 
-	}
+    }
 
     public void SpawnEnemy()
     {
@@ -49,5 +52,14 @@ public partial class LevelLogic : Node, ILevel
     public void StopSpawningEnemies()
     {
         EnemySpawnRate.Stop();
+    }
+
+    public void ViewportSizeChanged()
+    {
+        var size = GetViewport().GetVisibleRect().Size;
+        var hud = GetNode<Control>("PlayableCharacter/HUD");
+
+        hud.Size = size;
+        hud.Position = GetViewport().GetVisibleRect().Position + new Vector2(-size.X / 2, -size.Y / 2);
     }
 }
