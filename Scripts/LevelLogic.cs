@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 public partial class LevelLogic : Node, ILevel
 {
     public Path2D EnemySpawnPath { get; set; }
-
     public PathFollow2D EnemyPathFollow { get; set; }
     public Timer EnemySpawnRate { get; set; }
     [Export, Required, MinLength(1)]
@@ -51,6 +50,7 @@ public partial class LevelLogic : Node, ILevel
         enemy.Speed = 250;
         enemy.HealthPoints = 25;
         enemy.GlobalPosition = EnemyPathFollow.GlobalPosition;
+        enemy.Connect(Enemy.SignalName.EnemyLostAllHealth, new Callable(this, MethodName.IncreaseScore));
 
         AddChild(enemy);
     }
@@ -82,5 +82,11 @@ public partial class LevelLogic : Node, ILevel
     {
         SurvivalTime = new TimeSpan(SurvivalTime.Ticks + TimeSpan.TicksPerSecond);
         GetNode<Label>("PlayableCharacter/HUD/SurvivalTimeLabel").Text = SurvivalTime.ToString(@"mm\:ss");
+    }
+
+    public void IncreaseScore()
+    {
+        Globals.Target.Score += 1;
+        GetNode<Label>("PlayableCharacter/HUD/ScoreLabel").Text = String.Format("Score: {0}", Globals.Target.Score);
     }
 }

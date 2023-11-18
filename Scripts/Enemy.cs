@@ -5,6 +5,9 @@ using System;
 
 public partial class Enemy : Area2D, ICharacter
 {
+    [Signal]
+    public delegate void EnemyLostAllHealthEventHandler();
+
     [Export]
     public int Speed { get; set; }
     public Node Target { get; set; }
@@ -51,7 +54,8 @@ public partial class Enemy : Area2D, ICharacter
         {
             var bullet = area.GetNode<Bullet>(".");
             HealthBar.RemoveHealthPoints(bullet.WeaponOfOrigin.WeaponDamage);
-            area.QueueFree();
+
+            bullet.QueueFree();
         }
     }
 
@@ -77,6 +81,7 @@ public partial class Enemy : Area2D, ICharacter
 
     public void PlayerLostAllHealth()
     {
+        EmitSignal(SignalName.EnemyLostAllHealth);
         QueueFree();
     }
 }
