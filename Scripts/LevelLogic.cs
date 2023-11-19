@@ -20,8 +20,6 @@ public partial class LevelLogic : Node, ILevel
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GetTree().Root.Connect(Viewport.SignalName.SizeChanged, new Callable(this, MethodName.ViewportSizeChanged));
-
         EnemySpawnPath = GetNode<Path2D>("PlayableCharacter/EnemySpawnPath");
         EnemyPathFollow = GetNode<PathFollow2D>("PlayableCharacter/EnemySpawnPath/PathFollow2D");
         EnemySpawnRate = GetNode<Timer>("EnemySpawnRate");
@@ -29,9 +27,6 @@ public partial class LevelLogic : Node, ILevel
 
         GameStartTime = DateTime.Now;
         EnemySpawnRate.WaitTime = 3;
-
-        // Put the HUD in the right position
-        ViewportSizeChanged();
 
         StartSpawningEnemies();
     }
@@ -63,19 +58,6 @@ public partial class LevelLogic : Node, ILevel
     public void StopSpawningEnemies()
     {
         EnemySpawnRate.Stop();
-    }
-
-    public void ViewportSizeChanged()
-    {
-        var size = GetViewport().GetVisibleRect().Size;
-        var hud = GetNode<Control>("PlayableCharacter/HUD");
-
-        hud.Size = size;
-        hud.Position = GetViewport().GetVisibleRect().Position + new Vector2(-size.X / 2, -size.Y / 2);
-
-        // Edit enemy spawn path so it's slightly outside the viewport
-        //var enemySpawnPathSize = EnemySpawnPath
-        //EnemySpawnPath.Scale = GetViewport().GetVisibleRect().Position + new Vector2(-size.X / 2, -size.Y / 2);
     }
 
     public void SurvivalTimerTimeout()

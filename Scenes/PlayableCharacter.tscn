@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfciapigyl2lg"]
+[gd_scene load_steps=6 format=3 uid="uid://dfciapigyl2lg"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacter.cs" id="1_ktc35"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_lu26h"]
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/BaseWeapon.tscn" id="2_nkrcm"]
+[ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://Scenes/HUD.tscn" id="4_i2do2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
 size = Vector2(47.9525, 48)
@@ -31,5 +32,9 @@ shape = SubResource("RectangleShape2D_yiak4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 2.0
+
+[node name="HUD" parent="." instance=ExtResource("4_i2do2")]
+offset_top = -320.0
+offset_bottom = 320.0
 
 [connection signal="LostAllHealth" from="HealthBar" to="." method="PlayerLostAllHealth"]

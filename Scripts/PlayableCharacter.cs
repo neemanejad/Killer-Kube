@@ -9,6 +9,9 @@ public partial class PlayableCharacter : Character
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        // Listen to viewport changes and resize HUD accordingly
+        GetTree().Root.Connect(Viewport.SignalName.SizeChanged, new Callable(this, MethodName.ViewportSizeChanged));
+
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
         WeaponLocation.Position = new Vector2(Position.X, Position.Y);
@@ -23,6 +26,9 @@ public partial class PlayableCharacter : Character
         HealthBar = GetNode<HealthBar>("HealthBar");
         HealthBar.Health = HealthPoints;
         HealthBar.MaxHealth = HealthPoints;
+
+        // Put HUD in correct position
+        ViewportSizeChanged();
 
         EnableAttack();
 
@@ -98,5 +104,14 @@ public partial class PlayableCharacter : Character
             // Mouse moving from right to left above the player
             Weapon.FlipWeaponLeft();
         }
+    }
+
+    public void ViewportSizeChanged()
+    {
+        var size = GetViewport().GetVisibleRect().Size;
+        var hud = GetNode<Control>("HUD");
+
+        hud.SetDeferred(Control.PropertyName.Size, size);
+        hud.SetDeferred(Control.PropertyName.Position, GetViewport().GetVisibleRect().Position - new Vector2(size.X / 2, size.Y / 2));
     }
 }
