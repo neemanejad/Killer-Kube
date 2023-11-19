@@ -13,6 +13,7 @@ public partial class HealthBar : Node
 	public override void _Ready()
 	{
 		ProgressBar = GetNode<ProgressBar>("ProgressBar");
+		ProgressBar.Hide();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,11 +26,18 @@ public partial class HealthBar : Node
 	public void RemoveHealthPoints(double amount)
 	{
 		Health -= amount;
+
+		ProgressBar.Show();
 	}
 
 	public void AddHealthPoints(double amount)
 	{
 		Health += amount;
+
+		if (Health >= MaxHealth)
+		{
+			ProgressBar.Hide();
+		}
 	}
 
     public void OnHealthChanged(float value)
@@ -38,5 +46,15 @@ public partial class HealthBar : Node
 		{
 			EmitSignal(SignalName.LostAllHealth);
 		}
+	}
+
+	public void Show()
+	{
+		ProgressBar.Show();
+	}
+
+	public void Hide()
+	{
+		ProgressBar.Hide();
 	}
 }

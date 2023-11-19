@@ -17,7 +17,7 @@ script = ExtResource("1_hg6fd")
 EnemyScenes = Array[PackedScene]([ExtResource("3_76nrd")])
 
 [node name="FightArea" parent="." instance=ExtResource("1_sp1v3")]
-scale = Vector2(2.825, 1.91)
+scale = Vector2(5.085, 3.835)
 
 [node name="PlayableCharacter" parent="." instance=ExtResource("3_c87h4")]
 Speed = 500
