@@ -37,10 +37,11 @@ script = ExtResource("1_mff6b")
 [node name="HitTimer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(96, 32)
 sprite_frames = SubResource("SpriteFrames_gblix")
 animation = &"idle"
 
 [node name="ProjectileSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(80, -40)
+position = Vector2(176, -8)
 
 [connection signal="timeout" from="HitTimer" to="." method="OnHitTimerTimeout"]
