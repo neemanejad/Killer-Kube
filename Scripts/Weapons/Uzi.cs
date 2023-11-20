@@ -23,7 +23,7 @@ namespace Nova.Scripts.Weapons
         public override void OnHitTimerTimeout()
         {
             var projectile = bulletScene.Instantiate<Bullet>();
-            projectile.Speed = 600;
+            projectile.Speed = 1250;
             projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
             projectile.Scale = new Vector2(1, 1);
             projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
