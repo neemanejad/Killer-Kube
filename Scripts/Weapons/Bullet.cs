@@ -1,12 +1,8 @@
 using Godot;
-using System;
+using Nova.Scripts.Weapons;
 
-public partial class Bullet : Area2D
+public partial class Bullet : Projectile
 {
-	public Vector2 Direction { get; set; }
-	public double Speed { get; set; }
-	public Weapon WeaponOfOrigin { get; set; }
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,14 +17,4 @@ public partial class Bullet : Area2D
 		);
 
     }
-
-    public void OnBodyEntered(Node body)
-	{
-		//QueueFree();	
-	}
-
-    public void OnScreenExited()
-	{
-		QueueFree();
-	}
 }

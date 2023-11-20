@@ -5,16 +5,10 @@ using static IWeapon;
 
 public partial class Weapon : Node2D, IWeapon
 {
-    [Export]
     public string WeaponName { get; set; }
-    [Export]
     public double WeaponDamage { get; set; }
-    [Export]
     public double WeaponHitRate { get; set; }
-    [Export]
     public double WeaponDamageMultiplier { get; set; }
-    [Export]
-    public PackedScene Projectile { get; set; }
     public Timer HitTimer { get; set; }
     public WeaponDirection Direction { get; set; } = WeaponDirection.Right;
 
@@ -22,8 +16,7 @@ public partial class Weapon : Node2D, IWeapon
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        HitTimer = GetNode<Timer>("HitTimer");
-        HitTimer.WaitTime = WeaponHitRate;
+        
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,45 +25,35 @@ public partial class Weapon : Node2D, IWeapon
         
 	}
 
-    private void OnHitTimerTimeout()
+    public virtual void OnHitTimerTimeout()
     {
-        var projectile = Projectile.Instantiate<Bullet>();
-        projectile.Speed = 600;
-        projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
-        projectile.Scale = new Vector2(1, 1);
-        projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
-        projectile.Rotation = Rotation;
-        projectile.WeaponOfOrigin = this;
-        
-        GetTree().Root.AddChild(projectile);
+        throw new NotImplementedException();
     }
 
-    public void PointWeaponAtLocation(Vector2 location)
+    public virtual void PointWeaponAtLocation(Vector2 location)
     {
         LookAt(location);
     }
 
-    public void FlipWeaponRight()
+    public virtual void FlipWeaponRight()
     {
         Scale = Scale.Y <= 0 ? new Vector2(Scale.X, -Scale.Y) : Scale;
         Direction = WeaponDirection.Right;
     }
 
-    public void FlipWeaponLeft()
+    public virtual void FlipWeaponLeft()
     {
         Scale = Scale.Y >= 0 ? new Vector2(Scale.X, -Scale.Y) : Scale;
         Direction = WeaponDirection.Left;
     }
 
-    public void EnableWeaponAction()
+    public virtual void EnableWeaponAction()
     {
-        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("shoot");
         HitTimer.Start();
     }
 
-    public void DisableWeaponAction()
+    public virtual void DisableWeaponAction()
     {
-        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
         HitTimer.Stop();
     }
 }
