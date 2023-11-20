@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cpr31tetvfn3u"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/BaseWeapon.cs" id="1_tjmrr"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Weapon.cs" id="1_dnx4j"]
 [ext_resource type="PackedScene" uid="uid://d05inue317d5g" path="res://Scenes/Bullet.tscn" id="2_gkug8"]
 [ext_resource type="Texture2D" uid="uid://s12sjsbxmfjp" path="res://art/small_sub_machine_gun0.png" id="3_ugtjg"]
 [ext_resource type="Texture2D" uid="uid://1bymhwdju0pn" path="res://art/small_sub_machine_gun1.png" id="4_c3uhj"]
@@ -33,9 +33,7 @@ animations = [{
 }]
 
 [node name="SmallSubMachineGun" type="Node2D"]
-script = ExtResource("1_tjmrr")
-WeaponHitRate = 0.05
-WeaponDamageMultiplier = 2.0
+script = ExtResource("1_dnx4j")
 Projectile = ExtResource("2_gkug8")
 
 [node name="HitTimer" type="Timer" parent="."]

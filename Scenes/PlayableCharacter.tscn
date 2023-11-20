@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfciapigyl2lg"]
 
-[ext_resource type="Script" path="res://Scripts/PlayableCharacter.cs" id="1_ktc35"]
+[ext_resource type="Script" path="res://Scripts/Characters/PlayableCharacter.cs" id="1_40qta"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_lu26h"]
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/BaseWeapon.tscn" id="2_nkrcm"]
 [ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://Scenes/HUD.tscn" id="4_i2do2"]
@@ -9,9 +9,8 @@
 size = Vector2(47.9525, 48)
 
 [node name="PlayableCharacter" type="CharacterBody2D" groups=["Player"]]
-script = ExtResource("1_ktc35")
+script = ExtResource("1_40qta")
 WeaponScene = ExtResource("2_nkrcm")
-HealthPoints = 100.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -24.0

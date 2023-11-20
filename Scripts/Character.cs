@@ -1,8 +1,5 @@
 using Godot;
-using Nova.Scripts.Character;
-using System;
-using System.Transactions;
-using static IWeapon;
+using Nova.Scripts;
 
 public partial class Character : CharacterBody2D, ICharacter
 {
@@ -10,12 +7,12 @@ public partial class Character : CharacterBody2D, ICharacter
     public int Speed { get; set; } = 400;
     [Export]
     public PackedScene WeaponScene { get; set; }
-    public BaseWeapon Weapon { get; set; }
+    public Weapon Weapon { get; set; }
     public Marker2D WeaponLocation { get; set; }
     public HealthBar HealthBar { get; set; }
     public Marker2D HealthBarLocation { get; set; }
     [Export]
-    public double HealthPoints { get; set; }
+    public double HealthPoints { get; set; } = 100;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

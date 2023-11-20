@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nova.Scripts.Character
+namespace Nova.Scripts
 {
     internal interface ICharacter
     {
         public int Speed { get; set; }
         public PackedScene WeaponScene { get; set; }
-        public BaseWeapon Weapon { get; set; }
+        public Weapon Weapon { get; set; }
         public Marker2D WeaponLocation { get; set; }
         public HealthBar HealthBar { get; set; }
         public Marker2D HealthBarLocation { get; set; }

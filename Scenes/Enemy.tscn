@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dakjh20k2065d"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_txdwj"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Enemy.cs" id="1_glak7"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_3w08q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfsr8"]
 size = Vector2(32, 32)
 
 [node name="Enemy" type="Area2D"]
-script = ExtResource("1_txdwj")
-HealthPoints = 100.0
+script = ExtResource("1_glak7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -16.0

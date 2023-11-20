@@ -15,6 +15,7 @@ public interface IWeapon
 	public double WeaponDamageMultiplier { get; set; }
 	public PackedScene Projectile { get; set; }
 	public WeaponDirection Direction { get; set; }
+	public Timer HitTimer { get; set; }
 	public void PointWeaponAtLocation(Vector2 location);
 
     public void FlipWeaponRight();

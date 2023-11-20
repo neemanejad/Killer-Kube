@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using static IWeapon;
 
-public partial class BaseWeapon : Node2D, IWeapon
+public partial class Weapon : Node2D, IWeapon
 {
     [Export]
     public string WeaponName { get; set; }
@@ -15,13 +15,15 @@ public partial class BaseWeapon : Node2D, IWeapon
     public double WeaponDamageMultiplier { get; set; }
     [Export]
     public PackedScene Projectile { get; set; }
+    public Timer HitTimer { get; set; }
     public WeaponDirection Direction { get; set; } = WeaponDirection.Right;
 
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        GetNode<Timer>("HitTimer").WaitTime = WeaponHitRate;
+        HitTimer = GetNode<Timer>("HitTimer");
+        HitTimer.WaitTime = WeaponHitRate;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,12 +65,12 @@ public partial class BaseWeapon : Node2D, IWeapon
     public void EnableWeaponAction()
     {
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("shoot");
-        GetNode<Timer>("HitTimer").Start();
+        HitTimer.Start();
     }
 
     public void DisableWeaponAction()
     {
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
-        GetNode<Timer>("HitTimer").Stop();
+        HitTimer.Stop();
     }
 }

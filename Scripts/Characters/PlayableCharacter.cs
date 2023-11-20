@@ -16,7 +16,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
         WeaponLocation.Position = new Vector2(Position.X, Position.Y);
-        Weapon = WeaponScene.Instantiate<BaseWeapon>();
+        Weapon = WeaponScene.Instantiate<Weapon>();
         Weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
         Weapon.Scale = new Vector2((float)0.2, (float)0.2);
         Weapon.WeaponDamage = 2;

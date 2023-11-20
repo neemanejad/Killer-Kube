@@ -1,9 +1,9 @@
 using Godot;
 using Nova.Scripts;
-using Nova.Scripts.Character;
+using Nova.Scripts.Enemies;
 using System;
 
-public partial class Enemy : Area2D, ICharacter
+public partial class Enemy : Area2D, IEnemy
 {
     [Signal]
     public delegate void EnemyLostAllHealthEventHandler();
@@ -13,7 +13,7 @@ public partial class Enemy : Area2D, ICharacter
     public Node Target { get; set; }
     [Export]
     public PackedScene WeaponScene { get; set; }
-    public BaseWeapon Weapon { get; set; }
+    public Weapon Weapon { get; set; }
     public Marker2D WeaponLocation { get; set; }
     public HealthBar HealthBar { get; set; }
     public Marker2D HealthBarLocation { get; set; }
@@ -38,12 +38,12 @@ public partial class Enemy : Area2D, ICharacter
         GlobalPosition += (GlobalPosition.DirectionTo(Globals.Target.GlobalPosition) * (float)delta * Speed);
     }
 
-    public void EnableAttack()
+    public virtual void EnableAttack()
     {
         throw new NotImplementedException();
     }
 
-    public void DisableAttack()
+    public virtual void DisableAttack()
     {
         throw new NotImplementedException();
     }
