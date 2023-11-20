@@ -37,7 +37,7 @@ public partial class Character : CharacterBody2D, ICharacter
         Weapon.DisableWeaponAction();
     }
 
-    public void PlayerLostAllHealth()
+    public virtual void LostAllHealth()
     {
         QueueFree();
     }

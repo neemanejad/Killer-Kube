@@ -79,7 +79,7 @@ public partial class Enemy : Area2D, ICharacter
         Target.GetNode<HealthBar>("HealthBar").RemoveHealthPoints(5);
     }
 
-    public void PlayerLostAllHealth()
+    public void LostAllHealth()
     {
         EmitSignal(SignalName.EnemyLostAllHealth);
         QueueFree();

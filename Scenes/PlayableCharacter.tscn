@@ -37,4 +37,4 @@ position_smoothing_speed = 2.0
 offset_top = -320.0
 offset_bottom = 320.0
 
-[connection signal="LostAllHealth" from="HealthBar" to="." method="PlayerLostAllHealth"]
+[connection signal="LostAllHealth" from="HealthBar" to="." method="LostAllHealth"]

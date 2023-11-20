@@ -18,6 +18,6 @@ namespace Nova.Scripts.Character
         public double HealthPoints { get; set; }
         public void EnableAttack();
         public void DisableAttack();
-        public void PlayerLostAllHealth();
+        public void LostAllHealth();
     }
 }

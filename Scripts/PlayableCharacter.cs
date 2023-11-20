@@ -1,8 +1,9 @@
 using Godot;
 using Nova.Scripts;
+using Nova.Scripts.Character;
 using static IWeapon;
 
-public partial class PlayableCharacter : Character
+public partial class PlayableCharacter : Character, IPlayableCharacter
 {
     public int Score { get; set; } = 0;
 

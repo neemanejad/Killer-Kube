@@ -30,4 +30,4 @@ position = Vector2(0, -40)
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="OnBodyExited"]
 [connection signal="timeout" from="HitTimer" to="." method="OnHitTimerTimeout"]
-[connection signal="LostAllHealth" from="HealthBar" to="." method="PlayerLostAllHealth"]
+[connection signal="LostAllHealth" from="HealthBar" to="." method="LostAllHealth"]
