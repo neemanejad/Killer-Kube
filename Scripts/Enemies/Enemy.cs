@@ -61,7 +61,7 @@ public partial class Enemy : Area2D, IEnemy
 
     public void OnBodyEntered(Node body)
     {
-        if (body.IsInGroup("Player") && HitTimer.IsStopped())
+        if (body.IsInGroup("Player"))
         {
             body.GetNode<HealthBar>("HealthBar").RemoveHealthPoints(5);
             Target = body;
@@ -71,7 +71,10 @@ public partial class Enemy : Area2D, IEnemy
 
     public void OnBodyExited(Node body)
     {
-        HitTimer.Stop();
+        if (body.IsInGroup("Player"))
+        {
+            HitTimer.Stop();
+        }
     }
 
     public void OnHitTimerTimeout()
