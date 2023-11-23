@@ -41,6 +41,12 @@ public partial class LevelLogic : Node, ILevel
     {
         EnemyPathFollow.ProgressRatio = GD.Randf();
 
+        // Recalculate enemy position if the position is outside the level ground
+        while (IsOutsideLevel(EnemyPathFollow.GlobalPosition))
+        {
+            EnemyPathFollow.ProgressRatio = GD.Randf();
+        }
+
         var enemy = EnemyScenes[0].Instantiate<Enemy>();
         enemy.Speed = 250;
         enemy.HealthPoints = 25;
@@ -48,6 +54,12 @@ public partial class LevelLogic : Node, ILevel
         enemy.Connect(Enemy.SignalName.EnemyLostAllHealth, new Callable(this, MethodName.IncreaseScore));
 
         AddChild(enemy);
+    }
+
+    public bool IsOutsideLevel(Vector2 position)
+    {
+        var levelGround = GetNode<ReferenceRect>("FightArea/Area2D/ReferenceRect");
+        return !levelGround.GetGlobalRect().HasPoint(position);
     }
 
     public void StartSpawningEnemies()
