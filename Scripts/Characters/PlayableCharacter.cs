@@ -29,7 +29,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         HealthBar.MaxHealth = HealthPoints;
 
         // Put HUD in correct position
-        ViewportSizeChanged();
+        //ViewportSizeChanged();
 
         EnableAttack();
 
@@ -109,10 +109,10 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 
     public void ViewportSizeChanged()
     {
-        var size = GetViewport().GetVisibleRect().Size;
-        var hud = GetNode<Control>("HUD");
+        //var size = DisplayServer.WindowGetSize();
+        //var hud = GetNode<Control>("HUD");
 
-        hud.SetDeferred(Control.PropertyName.Size, size);
-        hud.SetDeferred(Control.PropertyName.Position, GetViewport().GetVisibleRect().Position - new Vector2(size.X / 2, size.Y / 2));
+        //hud.SetDeferred(Control.PropertyName.Size, size);
+        //hud.SetDeferred(Control.PropertyName.Position, GetViewport().GetVisibleRect().Position - new Vector2(size.X, size.Y));
     }
 }

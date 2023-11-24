@@ -1,15 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkftomnbgpac2"]
+[gd_scene load_steps=5 format=3 uid="uid://dkftomnbgpac2"]
 
 [ext_resource type="Script" path="res://Scripts/LevelLogic.cs" id="1_j5lh6"]
 [ext_resource type="PackedScene" uid="uid://dakjh20k2065d" path="res://Scenes/Enemy.tscn" id="2_l5bxl"]
 [ext_resource type="PackedScene" uid="uid://cd42m2v2fpp8k" path="res://Scenes/FightArea.tscn" id="3_sl2re"]
 [ext_resource type="PackedScene" uid="uid://dfciapigyl2lg" path="res://Scenes/PlayableCharacter.tscn" id="4_n7fcc"]
-
-[sub_resource type="Curve2D" id="Curve2D_ktuns"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -640, -384, 0, 0, 0, 0, 640, -384, 0, 0, 0, 0, 640, 384, 0, 0, 0, 0, -640, 384, 0, 0, 0, 0, -640, -384)
-}
-point_count = 5
 
 [node name="Main" type="Node"]
 script = ExtResource("1_j5lh6")
@@ -18,19 +12,12 @@ EnemyScenes = Array[PackedScene]([ExtResource("2_l5bxl")])
 [node name="FightArea" parent="." instance=ExtResource("3_sl2re")]
 scale = Vector2(5.085, 3.835)
 
-[node name="PlayableCharacter" parent="." instance=ExtResource("4_n7fcc")]
-Speed = 500
-
-[node name="EnemySpawnPath" type="Path2D" parent="PlayableCharacter"]
-curve = SubResource("Curve2D_ktuns")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="PlayableCharacter/EnemySpawnPath"]
-position = Vector2(-640, -384)
-
 [node name="EnemySpawnRate" type="Timer" parent="."]
 
 [node name="SurvivalTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="PlayableCharacter" parent="." instance=ExtResource("4_n7fcc")]
 
 [connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
 [connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]
