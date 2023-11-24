@@ -1,4 +1,5 @@
 using Godot;
+using Nova.Scripts;
 using System;
 
 public partial class LevelSelectMenu : Control
@@ -13,8 +14,9 @@ public partial class LevelSelectMenu : Control
 	{
 	}
 
-    public void LevelButtonUp()
+    public void LevelButtonUp(PackedScene level)
     {
+		Globals.SelectedLevel = level;
         GetTree().ChangeSceneToFile("res://Scenes/Menus/CharacterSelectMenu.tscn");
     }
 

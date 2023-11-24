@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,17 @@ namespace Nova.Scripts
             {
                 target = value;
             }
+        }
+
+        static private PackedScene selectedLevel;
+        static public PackedScene SelectedLevel
+        {
+            get => selectedLevel;
+            set
+            {
+                selectedLevel = value;
+            }
+
         }
     }
 }

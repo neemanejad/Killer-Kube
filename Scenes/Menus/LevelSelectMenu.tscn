@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnu303sujjb0"]
+[gd_scene load_steps=5 format=3 uid="uid://cnu303sujjb0"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/LevelSelectMenu.cs" id="1_3m542"]
 [ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Scenes/Menus/MenuTheme.tres" id="1_bjix5"]
+[ext_resource type="Script" path="res://Scenes/Menus/LevelOption.cs" id="2_817gc"]
+[ext_resource type="PackedScene" uid="uid://dkftomnbgpac2" path="res://Scenes/Levels/Main.tscn" id="3_le7nu"]
 
 [node name="LevelSelectMenu" type="Control"]
 layout_mode = 3
@@ -25,6 +27,8 @@ offset_right = 384.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_817gc")
+Level = ExtResource("3_le7nu")
 
 [node name="Label" type="Label" parent="LevelOptionOne"]
 layout_mode = 0
@@ -32,7 +36,8 @@ offset_left = 16.0
 offset_top = 12.0
 offset_right = 112.0
 offset_bottom = 52.0
-text = "Level 1"
+text = "Main
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -45,5 +50,6 @@ offset_bottom = 64.0
 theme = ExtResource("1_bjix5")
 text = "Back"
 
-[connection signal="button_up" from="LevelOptionOne" to="." method="LevelButtonUp"]
+[connection signal="LevelOptionSelected" from="LevelOptionOne" to="." method="LevelButtonUp"]
+[connection signal="button_up" from="LevelOptionOne" to="LevelOptionOne" method="LevelOptionButtonUp"]
 [connection signal="button_up" from="Button" to="." method="BackButtonUp"]
