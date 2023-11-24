@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdqbvh5un67it"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/CharacterSelectMenu.cs" id="1_rn1jq"]
+[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Scenes/Menus/MenuTheme.tres" id="1_yq3gm"]
+
+[node name="CharacterSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rn1jq")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 64.0
+theme = ExtResource("1_yq3gm")
+text = "Back"
+
+[connection signal="button_up" from="Button" to="." method="BackButtonUp"]
