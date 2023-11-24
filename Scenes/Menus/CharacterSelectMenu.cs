@@ -13,6 +13,11 @@ public partial class CharacterSelectMenu : Control
 	{
 	}
 
+	public void CharacterOptionButtonUp()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/Levels/Main.tscn");
+	}
+
 	public void BackButtonUp()
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/Menus/LevelSelectMenu.tscn");
