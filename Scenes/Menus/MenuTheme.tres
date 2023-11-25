@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cg4hdyi8jj1fl"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cg4hdyi8jj1fl"]
 
 [ext_resource type="FontFile" uid="uid://2jrkt76g27wx" path="res://fonts/SpaceMono-Bold.ttf" id="1_evqys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ut74d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr4at"]
 bg_color = Color(0.14902, 0.14902, 0.14902, 1)
@@ -25,6 +27,7 @@ corner_radius_bottom_left = 5
 
 [resource]
 Button/fonts/font = ExtResource("1_evqys")
+Button/styles/focus = SubResource("StyleBoxEmpty_ut74d")
 Button/styles/hover = SubResource("StyleBoxFlat_xr4at")
 Button/styles/normal = SubResource("StyleBoxFlat_26tac")
 Button/styles/pressed = SubResource("StyleBoxFlat_n6jdc")

@@ -44,22 +44,18 @@ metadata/_edit_use_anchors_ = true
 [node name="TopWall" parent="." instance=ExtResource("2_n2e0u")]
 position = Vector2(-2368, -2360)
 scale = Vector2(121.053, 3.035)
-script = null
 
 [node name="BottomWall" parent="." instance=ExtResource("2_n2e0u")]
 position = Vector2(-2480, 2984)
 scale = Vector2(121.608, 3.031)
-script = null
 
 [node name="RightWall" parent="." instance=ExtResource("2_n2e0u")]
 position = Vector2(-2480, -2360)
 scale = Vector2(2.87, 136.101)
-script = null
 
 [node name="LeftWall" parent="." instance=ExtResource("2_n2e0u")]
 position = Vector2(2381.19, -2360)
 scale = Vector2(2.87, 136.611)
-script = null
 
 [node name="EnemySpawnRate" type="Timer" parent="."]
 
