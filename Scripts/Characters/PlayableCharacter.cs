@@ -7,9 +7,9 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 {
     public int Score { get; set; } = 0;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
         // Listen to viewport changes and resize HUD accordingly
         GetTree().Root.Connect(Viewport.SignalName.SizeChanged, new Callable(this, MethodName.ViewportSizeChanged));
 
@@ -47,6 +47,18 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public void ProcessMovementInput(double delta)
     {
         var velocity = Vector2.Zero;
+
+        if (Input.IsActionJustPressed("pause"))
+        {
+            var pauseMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menus/PauseMenu.tscn");
+            var pauseMenu = pauseMenuScene.Instantiate<PauseMenu>();
+            var hud = GetNode<Control>("HUD");
+
+            pauseMenu.SetDeferred(Control.PropertyName.Size, hud.Size);
+            pauseMenu.SetDeferred(Control.PropertyName.GlobalPosition, hud.GlobalPosition);
+
+            AddChild(pauseMenu);
+        }
 
         if (Input.IsActionPressed("move_up"))
         {

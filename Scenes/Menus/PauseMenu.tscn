@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwi8lwibotbw5"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/PauseMenu.cs" id="1_hbhg0"]
+[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Scenes/Menus/MenuTheme.tres" id="2_cpph2"]
+
+[node name="PauseMenu" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbhg0")
+
+[node name="BoxContainer" type="VBoxContainer" parent="."]
+z_index = 1000
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -56.0
+offset_right = 116.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_cpph2")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="BoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_cpph2")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("2_cpph2")
+text = "Quit to Menu
+"
+
+[connection signal="button_up" from="BoxContainer/ResumeButton" to="." method="ResumeButtonUp"]
+[connection signal="button_up" from="BoxContainer/SettingsButton" to="." method="SettingsButtonUp"]
+[connection signal="button_up" from="BoxContainer/QuitButton" to="." method="QuitButtonUp"]
