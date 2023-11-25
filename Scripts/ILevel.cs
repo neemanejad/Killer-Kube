@@ -9,6 +9,8 @@ namespace Nova.Scripts
 {
     internal interface ILevel
     {
+        public PackedScene PlayerScene { get; set; }
+        public PlayableCharacter Player { get; set; }
         public Path2D EnemySpawnPath { get; set; }
         public PathFollow2D EnemyPathFollow { get; set; }
         public Timer EnemySpawnRate { get; set; }

@@ -14,9 +14,23 @@ public partial class CharacterSelectMenu : Control
 	{
 	}
 
-	public void CharacterOptionButtonUp()
+	public void CharacterOptionButtonUp(PackedScene character)
 	{
-		GetTree().ChangeSceneToPacked(Globals.SelectedLevel);
+        Globals.SelectedCharacter = character;
+
+		// Remove this as a child
+		var root = GetTree().Root;
+		root.RemoveChild(this);
+
+        // Instantiate level with appropriate data
+        var level = Globals.SelectedLevel.Instantiate<Level>();
+		level.PlayerScene = Globals.SelectedCharacter;
+
+		// Add level as child of root
+		root.AddChild(level);
+
+		// Free this node
+		QueueFree();
 	}
 
 	public void BackButtonUp()

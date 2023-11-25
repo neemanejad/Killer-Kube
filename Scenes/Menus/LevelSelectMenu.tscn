@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Menus/LevelSelectMenu.cs" id="1_3m542"]
 [ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Scenes/Menus/MenuTheme.tres" id="1_bjix5"]
 [ext_resource type="Script" path="res://Scenes/Menus/LevelOption.cs" id="2_817gc"]
-[ext_resource type="PackedScene" uid="uid://dkftomnbgpac2" path="res://Scenes/Levels/Main.tscn" id="3_le7nu"]
+[ext_resource type="PackedScene" uid="uid://cd42m2v2fpp8k" path="res://Scenes/Levels/PrisonLevel.tscn" id="3_6s7jq"]
 
 [node name="LevelSelectMenu" type="Control"]
 layout_mode = 3
@@ -28,7 +28,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_817gc")
-Level = ExtResource("3_le7nu")
+Level = ExtResource("3_6s7jq")
 
 [node name="Label" type="Label" parent="LevelOptionOne"]
 layout_mode = 0

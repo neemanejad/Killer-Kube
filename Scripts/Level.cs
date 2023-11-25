@@ -6,13 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-public partial class LevelLogic : Node, ILevel
+public partial class Level : Node, ILevel
 {
+    public PackedScene PlayerScene { get; set; }
+    public PlayableCharacter Player { get; set; }
+    public PackedScene[] EnemyScenes { get; set; } = new PackedScene[] { ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn") };
     public Path2D EnemySpawnPath { get; set; }
     public PathFollow2D EnemyPathFollow { get; set; }
     public Timer EnemySpawnRate { get; set; }
-    [Export, Required, MinLength(1)]
-    public PackedScene[] EnemyScenes { get; set; }
     public Timer SurvivalTimer { get; set; }
     public TimeSpan SurvivalTime { get; set; }
     public DateTime GameStartTime { get; set; }
@@ -20,6 +21,9 @@ public partial class LevelLogic : Node, ILevel
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        Player = PlayerScene.Instantiate<PlayableCharacter>();
+        AddChild(Player);
+
         EnemySpawnPath = GetNode<Path2D>("PlayableCharacter/EnemySpawnPath");
         EnemyPathFollow = GetNode<PathFollow2D>("PlayableCharacter/EnemySpawnPath/PathFollow2D");
         EnemySpawnRate = GetNode<Timer>("EnemySpawnRate");
@@ -58,7 +62,7 @@ public partial class LevelLogic : Node, ILevel
 
     public bool IsOutsideLevel(Vector2 position)
     {
-        var levelGround = GetNode<ReferenceRect>("FightArea/Area2D/ReferenceRect");
+        var levelGround = GetNode<ReferenceRect>("Area2D/ReferenceRect");
         return !levelGround.GetGlobalRect().HasPoint(position);
     }
 

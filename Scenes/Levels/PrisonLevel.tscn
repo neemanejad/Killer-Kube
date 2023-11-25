@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd42m2v2fpp8k"]
+
+[ext_resource type="Script" path="res://Scripts/Level.cs" id="1_47r01"]
+[ext_resource type="PackedScene" uid="uid://yf51xva4krac" path="res://Components/Wall.tscn" id="2_n2e0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80uv3"]
+size = Vector2(4968, 5464)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_47r01")
+metadata/_edit_vertical_guides_ = []
+
+[node name="Area2D" type="Area2D" parent="." groups=["LevelGround"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 364)
+shape = SubResource("RectangleShape2D_80uv3")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Area2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2360.0
+offset_top = -2240.0
+offset_right = 4.73598e+08
+offset_bottom = 5.22398e+08
+grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
+size_flags_horizontal = 4
+
+[node name="Ground" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = -1.81771
+anchor_top = -3.28395
+anchor_right = 1.98438
+anchor_bottom = 4.08642
+offset_left = -386.0
+offset_top = -232.0
+offset_right = 210.0
+offset_bottom = 456.0
+color = Color(0.32549, 0.333333, 0.368627, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TopWall" parent="." instance=ExtResource("2_n2e0u")]
+position = Vector2(-2368, -2360)
+scale = Vector2(121.053, 3.035)
+script = null
+
+[node name="BottomWall" parent="." instance=ExtResource("2_n2e0u")]
+position = Vector2(-2480, 2984)
+scale = Vector2(121.608, 3.031)
+script = null
+
+[node name="RightWall" parent="." instance=ExtResource("2_n2e0u")]
+position = Vector2(-2480, -2360)
+scale = Vector2(2.87, 136.101)
+script = null
+
+[node name="LeftWall" parent="." instance=ExtResource("2_n2e0u")]
+position = Vector2(2381.19, -2360)
+scale = Vector2(2.87, 136.611)
+script = null
+
+[node name="EnemySpawnRate" type="Timer" parent="."]
+
+[node name="SurvivalTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
+[connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]

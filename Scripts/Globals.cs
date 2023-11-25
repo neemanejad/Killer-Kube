@@ -32,5 +32,18 @@ namespace Nova.Scripts
             }
 
         }
+
+        static private PackedScene selectedCharacter;
+        static public PackedScene SelectedCharacter
+        {
+            get
+            {
+                return selectedCharacter;
+            }
+            set
+            {
+                selectedCharacter = value;
+            }
+        }
     }
 }
