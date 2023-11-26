@@ -37,20 +37,24 @@ scale = Vector2(1.00099, 1)
 shape = SubResource("RectangleShape2D_yiak4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_speed = 2.0
 
 [node name="EnemySpawnPath" type="Path2D" parent="."]
-scale = Vector2(1.605, 1.605)
+position = Vector2(-2.38419e-05, 1.52588e-05)
+scale = Vector2(1.8875, 1.83333)
 curve = SubResource("Curve2D_mysqx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawnPath"]
 position = Vector2(-640, -384)
 
 [node name="HUD" parent="." instance=ExtResource("4_i2do2")]
-offset_left = -960.0
-offset_top = -544.0
-offset_right = 960.0
-offset_bottom = 536.0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="SurvivalTimer" type="Timer" parent="."]
 
 [connection signal="LostAllHealth" from="HealthBar" to="." method="LostAllHealth"]
+[connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]

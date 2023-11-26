@@ -1,18 +1,27 @@
 using Godot;
 using Nova.Scripts;
 using Nova.Scripts.Character;
+using System;
 using static IWeapon;
 
 public partial class PlayableCharacter : Character, IPlayableCharacter
 {
-    public int Score { get; set; } = 0;
+    public int Score { get; set; }
+    public TimeSpan SurvivalTime { get; set; }
+
+    public void UpdateScoreString()
+    {
+        GetNode<Label>("HUD/ScoreLabel").Text = string.Format("Score: {0}", Score);
+    }
+
+    public void UpdateSurvivalTimeString()
+    {
+        GetNode<Label>("HUD/SurvivalTimeLabel").Text = SurvivalTime.ToString(@"mm\:ss");
+    }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        // Listen to viewport changes and resize HUD accordingly
-        GetTree().Root.Connect(Viewport.SignalName.SizeChanged, new Callable(this, MethodName.ViewportSizeChanged));
-
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
         WeaponLocation.Position = new Vector2(Position.X, Position.Y);
@@ -22,19 +31,23 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         Weapon.WeaponDamage = 2;
         Weapon.WeaponHitRate = 0.05;
         AddChild(Weapon);
+        EnableAttack();
 
         // Initialize health bar
         HealthBar = GetNode<HealthBar>("HealthBar");
         HealthBar.Health = HealthPoints;
         HealthBar.MaxHealth = HealthPoints;
 
-        // Put HUD in correct position
-        //ViewportSizeChanged();
-
-        EnableAttack();
+        GetNode<Timer>("SurvivalTimer").Start();
 
         // Set global variable so all enemies can track the player's position
         Globals.Target = this;
+    }
+
+    public void SurvivalTimerTimeout()
+    {
+        SurvivalTime += TimeSpan.FromSeconds(1);
+        UpdateSurvivalTimeString();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -119,12 +132,9 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         }
     }
 
-    public void ViewportSizeChanged()
+    public void KilledEnemy(Enemy enemy)
     {
-        //var size = DisplayServer.WindowGetSize();
-        //var hud = GetNode<Control>("HUD");
-
-        //hud.SetDeferred(Control.PropertyName.Size, size);
-        //hud.SetDeferred(Control.PropertyName.Position, GetViewport().GetVisibleRect().Position - new Vector2(size.X, size.Y));
+        Score += enemy.PointsForDeath;
+        UpdateScoreString();
     }
 }

@@ -15,9 +15,6 @@ namespace Nova.Scripts
         public PlayableCharacter Player { get; set; }
         public Path2D EnemySpawnPath { get; set; }
         public PathFollow2D EnemyPathFollow { get; set; }
-        public Timer SurvivalTimer { get; set; }
-        public TimeSpan SurvivalTime { get; set; }
-        public void SurvivalTimerTimeout();
         public void MilestoneTimerTimeout();
     }
 }

@@ -26,5 +26,6 @@ namespace Nova.Scripts
         public TimeSpan SpawnRate;
         public float Speed;
         public double HealthPoints;
+        public int PointsForDeath;
     }
 }

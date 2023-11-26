@@ -12,10 +12,8 @@ public partial class Level : Node, ILevel
     public PlayableCharacter Player { get; set; }
     public Path2D EnemySpawnPath { get; set; }
     public PathFollow2D EnemyPathFollow { get; set; }
-    public Timer SurvivalTimer { get; set; }
-    public TimeSpan SurvivalTime { get; set; }
 
-    private List<Timer> enemyTimers { get; set; } = new List<Timer>();
+    private List<Timer> enemySpawnTimers { get; set; } = new List<Timer>();
     private Dictionary<string, EnemyConfig> EnemyMap { get; set; } = new Dictionary<string, EnemyConfig>();
 
     // Called when the node enters the scene tree for the first time.
@@ -26,11 +24,10 @@ public partial class Level : Node, ILevel
 
         EnemySpawnPath = GetNode<Path2D>("PlayableCharacter/EnemySpawnPath");
         EnemyPathFollow = GetNode<PathFollow2D>("PlayableCharacter/EnemySpawnPath/PathFollow2D");
-        SurvivalTimer = GetNode<Timer>("SurvivalTimer");
 
         CreateEnemyMap();
-        CreateEnemyTimers();
-        StartEnemyTimers();
+        CreateEnemySpawnTimers();
+        StartEnemySpawnTimers();
 
         var milestoneTimer = GetNode<Timer>("MilestoneTimer");
         milestoneTimer.WaitTime = LevelConfig.Milestones[CurrentMilestoneIndex].MilestoneDuration.TotalSeconds;
@@ -58,7 +55,7 @@ public partial class Level : Node, ILevel
         }
     }
 
-    private void CreateEnemyTimers()
+    private void CreateEnemySpawnTimers()
     {
         var configs = LevelConfig.Milestones[CurrentMilestoneIndex].Enemies;
  
@@ -67,7 +64,7 @@ public partial class Level : Node, ILevel
             Timer timer = new EnemyTimer(config.Name);
             timer.WaitTime = config.SpawnRate.TotalSeconds;
             timer.Connect(EnemyTimer.SignalName.EnemyTimerTimeout, new Callable(this, MethodName.EnemySpawnTimerTimeout));
-            enemyTimers.Add(timer);
+            enemySpawnTimers.Add(timer);
             AddChild(timer);
         }
     }
@@ -85,32 +82,21 @@ public partial class Level : Node, ILevel
         var enemy = enemyConfig.EnemyScene.Instantiate<Enemy>();
         enemy.Speed = enemyConfig.Speed;
         enemy.HealthPoints = enemyConfig.HealthPoints;
+        enemy.PointsForDeath = enemyConfig.PointsForDeath;
         enemy.GlobalPosition = EnemyPathFollow.GlobalPosition;
-        enemy.Connect(Enemy.SignalName.EnemyLostAllHealth, new Callable(this, MethodName.IncreaseScore));
+        enemy.Connect(Enemy.SignalName.EnemyLostAllHealth, new Callable(Globals.Target, PlayableCharacter.MethodName.KilledEnemy));
 
         AddChild(enemy);
     }
 
     private void QueueFreeEnemyTimers()
     {
-        foreach (var timer in enemyTimers)
+        foreach (var timer in enemySpawnTimers)
         {
             timer.QueueFree();
         }
 
-        enemyTimers.Clear();
-    }
-
-    public void SurvivalTimerTimeout()
-    {
-        SurvivalTime = new TimeSpan(SurvivalTime.Ticks + TimeSpan.TicksPerSecond);
-        GetNode<Label>("PlayableCharacter/HUD/SurvivalTimeLabel").Text = SurvivalTime.ToString(@"mm\:ss");
-    }
-
-    public void IncreaseScore()
-    {
-        Globals.Target.Score += 1;
-        GetNode<Label>("PlayableCharacter/HUD/ScoreLabel").Text = String.Format("Score: {0}", Globals.Target.Score);
+        enemySpawnTimers.Clear();
     }
 
     public void MilestoneTimerTimeout()
@@ -130,16 +116,16 @@ public partial class Level : Node, ILevel
         CurrentMilestoneIndex += 1;
 
         CreateEnemyMap();
-        CreateEnemyTimers();
-        StartEnemyTimers();
+        CreateEnemySpawnTimers();
+        StartEnemySpawnTimers();
 
         GetNode<Timer>("MilestoneTimer").WaitTime = LevelConfig.Milestones[CurrentMilestoneIndex].MilestoneDuration.TotalSeconds;
         GetNode<Timer>("MilestoneTimer").Start(0);
     }
 
-    private void StartEnemyTimers()
+    private void StartEnemySpawnTimers()
     {
-        foreach (var timer in enemyTimers)
+        foreach (var timer in enemySpawnTimers)
         {
             timer.Start();
         }
@@ -147,7 +133,7 @@ public partial class Level : Node, ILevel
 
     private void StopEnemyTimers()
     {
-        foreach (var timer in enemyTimers)
+        foreach (var timer in enemySpawnTimers)
         {
             timer.Stop();
         }

@@ -59,11 +59,7 @@ scale = Vector2(2.87, 136.611)
 
 [node name="EnemySpawnRate" type="Timer" parent="."]
 
-[node name="SurvivalTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="MilestoneTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
-[connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]
 [connection signal="timeout" from="MilestoneTimer" to="." method="MilestoneTimerTimeout"]

@@ -20,7 +20,8 @@ public partial class PrisonLevel : Level
                         EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 350,
-                        HealthPoints = 50
+                        HealthPoints = 50,
+                        PointsForDeath = 1
                     }
                 }
             },
@@ -33,8 +34,9 @@ public partial class PrisonLevel : Level
                         Name = "FastEnemy",
                         EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
-                        Speed = 450,
-                        HealthPoints = 20
+                        Speed = 425,
+                        HealthPoints = 20,
+                        PointsForDeath = 3
                     }
                 }
             }

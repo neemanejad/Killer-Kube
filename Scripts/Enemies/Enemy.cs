@@ -6,11 +6,12 @@ using System;
 public partial class Enemy : Area2D, IEnemy
 {
     [Signal]
-    public delegate void EnemyLostAllHealthEventHandler();
+    public delegate void EnemyLostAllHealthEventHandler(Enemy enemy);
 
     [Export]
     public float Speed { get; set; }
     public Node Target { get; set; }
+    public int PointsForDeath { get; set; }
     [Export]
     public PackedScene WeaponScene { get; set; }
     public Weapon Weapon { get; set; }
@@ -84,7 +85,7 @@ public partial class Enemy : Area2D, IEnemy
 
     public void LostAllHealth()
     {
-        EmitSignal(SignalName.EnemyLostAllHealth);
+        EmitSignal(SignalName.EnemyLostAllHealth, this);
         QueueFree();
     }
 }
