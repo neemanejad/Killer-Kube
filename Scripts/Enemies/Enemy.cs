@@ -9,7 +9,7 @@ public partial class Enemy : Area2D, IEnemy
     public delegate void EnemyLostAllHealthEventHandler();
 
     [Export]
-    public int Speed { get; set; }
+    public float Speed { get; set; }
     public Node Target { get; set; }
     [Export]
     public PackedScene WeaponScene { get; set; }

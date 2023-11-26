@@ -2,27 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Nova.Scripts
 {
-    internal struct LevelConfig
+    public struct LevelConfig
     {
-        LevelTimerMilestone[] milestones;
+        public LevelMilestone[] Milestones;
     }
 
-    internal struct LevelTimerMilestone
+    public struct LevelMilestone
     {
-        DateTime start;
-        DateTime end;
-        EnemyConfig[] enemies;
+        public TimeSpan MilestoneDuration;
+        public EnemyConfig[] Enemies;
     }
 
-    internal struct EnemyConfig
+    public struct EnemyConfig
     {
-        string name;
-        PackedScene enemyScene;
-        TimeSpan spawnRate;
+        public string Name;
+        public PackedScene EnemyScene;
+        public TimeSpan SpawnRate;
+        public float Speed;
+        public double HealthPoints;
     }
 }

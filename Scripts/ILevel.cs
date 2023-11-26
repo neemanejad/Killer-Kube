@@ -9,17 +9,15 @@ namespace Nova.Scripts
 {
     internal interface ILevel
     {
+        public LevelConfig LevelConfig { get; set; }
+        public int CurrentMilestoneIndex { get; set; }
         public PackedScene PlayerScene { get; set; }
         public PlayableCharacter Player { get; set; }
         public Path2D EnemySpawnPath { get; set; }
         public PathFollow2D EnemyPathFollow { get; set; }
-        public Timer EnemySpawnRate { get; set; }
         public Timer SurvivalTimer { get; set; }
         public TimeSpan SurvivalTime { get; set; }
-        public DateTime GameStartTime { get; set; }
-        public void SpawnEnemy();
-        public void StartSpawningEnemies();
-        public void StopSpawningEnemies();
         public void SurvivalTimerTimeout();
+        public void MilestoneTimerTimeout();
     }
 }

@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cd42m2v2fpp8k"]
 
-[ext_resource type="Script" path="res://Scripts/Level.cs" id="1_47r01"]
+[ext_resource type="Script" path="res://Scenes/Levels/PrisonLevel.cs" id="1_itkgg"]
 [ext_resource type="PackedScene" uid="uid://yf51xva4krac" path="res://Components/Wall.tscn" id="2_n2e0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80uv3"]
 size = Vector2(4968, 5464)
 
 [node name="Level" type="Node"]
-script = ExtResource("1_47r01")
+script = ExtResource("1_itkgg")
 metadata/_edit_vertical_guides_ = []
 
 [node name="Area2D" type="Area2D" parent="." groups=["LevelGround"]]
@@ -62,5 +62,8 @@ scale = Vector2(2.87, 136.611)
 [node name="SurvivalTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="MilestoneTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
 [connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]
+[connection signal="timeout" from="MilestoneTimer" to="." method="MilestoneTimerTimeout"]

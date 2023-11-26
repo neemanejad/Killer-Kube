@@ -16,7 +16,6 @@ point_count = 5
 
 [node name="PlayableCharacter" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_40qta")
-Speed = 500
 WeaponScene = ExtResource("2_t8k4g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
