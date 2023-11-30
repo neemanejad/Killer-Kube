@@ -14,6 +14,9 @@ public partial class Character : CharacterBody2D, ICharacter
     [Export]
     public double HealthPoints { get; set; } = 100;
 
+    [Signal]
+    public delegate void OnLostAllHealthEventHandler();
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -36,6 +39,7 @@ public partial class Character : CharacterBody2D, ICharacter
 
     public virtual void LostAllHealth()
     {
+        EmitSignal(SignalName.OnLostAllHealth);
         QueueFree();
     }
 }

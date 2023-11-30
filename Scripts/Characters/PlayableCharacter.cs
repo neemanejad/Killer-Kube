@@ -22,6 +22,9 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        // Setup health related signals
+        Connect(SignalName.OnLostAllHealth, new Callable(this, MethodName.ShowGameOverScreen));
+
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
         WeaponLocation.Position = new Vector2(Position.X, Position.Y);
@@ -136,5 +139,19 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     {
         Score += enemy.PointsForDeath;
         UpdateScoreString();
+    }
+
+    public void ShowGameOverScreen()
+    {
+        var gameOverMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menus/GameOverMenu.tscn");
+        var gameOverMenu = gameOverMenuScene.Instantiate<GameOverMenu>();
+        var hud = GetNode<Control>("HUD");
+
+        gameOverMenu.SetDeferred(Control.PropertyName.Size, GetViewportRect().Size);
+        gameOverMenu.SetDeferred(Control.PropertyName.GlobalPosition, GetViewportRect().Position);
+
+        // Add as child of root node so the menu doesn't
+        // get deleted alongside the PlayableCharacter
+        GetTree().Root.AddChild(gameOverMenu);
     }
 }

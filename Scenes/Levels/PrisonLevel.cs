@@ -27,16 +27,25 @@ public partial class PrisonLevel : Level
             },
             new LevelMilestone
             {
-                MilestoneDuration = TimeSpan.FromSeconds(15),
+                MilestoneDuration = TimeSpan.FromSeconds(10),
                 Enemies = new EnemyConfig[] {
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
                         EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
-                        Speed = 425,
+                        Speed = 400,
                         HealthPoints = 20,
                         PointsForDeath = 3
+                    },
+                    new EnemyConfig
+                    {
+                        Name = "SlowHeavy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 200,
+                        HealthPoints = 200,
+                        PointsForDeath = 5
                     }
                 }
             }
