@@ -42,7 +42,7 @@ public partial class Level : Node, ILevel
 
     public bool IsOutsideLevel(Vector2 position)
     {
-        var levelGround = GetNode<ReferenceRect>("Area2D/ReferenceRect");
+        var levelGround = GetNode<ReferenceRect>("TileMap/ReferenceRect");
         return !levelGround.GetGlobalRect().HasPoint(position);
     }
 
