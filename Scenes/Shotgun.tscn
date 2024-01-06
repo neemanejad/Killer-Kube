@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6umdmxj5qdpn"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/Shotgun.cs" id="1_70h5g"]
+[ext_resource type="Texture2D" uid="uid://cesa1r381sigj" path="res://art/shotgun.png" id="2_cwxjh"]
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_70h5g")
+
+[node name="HitTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(184, 1.52588e-05)
+scale = Vector2(0.164062, 0.22168)
+texture = ExtResource("2_cwxjh")
+
+[node name="ProjectileSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(440, -40)
+scale = Vector2(1, 1)
+
+[connection signal="timeout" from="HitTimer" to="." method="OnHitTimerTimeout"]

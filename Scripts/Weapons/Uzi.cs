@@ -10,6 +10,8 @@ namespace Nova.Scripts.Weapons
         public override void _Ready()
         {
             bulletScene = ResourceLoader.Load<PackedScene>("res://Scenes/Bullet.tscn");
+            WeaponHitRate = 0.05;
+            WeaponDamage = 8;
             HitTimer = GetNode<Timer>("HitTimer");
             HitTimer.WaitTime = WeaponHitRate;
         }

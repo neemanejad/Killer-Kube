@@ -4,7 +4,7 @@ using Nova.Scripts;
 public partial class Character : CharacterBody2D, ICharacter
 {
     [Export]
-    public float Speed { get; set; } = 400;
+    public float Speed { get; set; } = 500;
     [Export]
     public PackedScene WeaponScene { get; set; }
     public Weapon Weapon { get; set; }
