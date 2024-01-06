@@ -101,7 +101,7 @@ public partial class Level : Node, ILevel
 
     public void MilestoneTimerTimeout()
     { 
-        if (CurrentMilestoneIndex == LevelConfig.Milestones.Length)
+        if (CurrentMilestoneIndex == LevelConfig.Milestones.Length - 1)
         {
             StopEnemyTimers();
 
