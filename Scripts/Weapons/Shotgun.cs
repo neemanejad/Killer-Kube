@@ -8,9 +8,7 @@ public partial class Shotgun : Weapon
     private PackedScene bulletScene;
 
     public override void _Ready()
-    {
-        WeaponName = "Shotgun";
-        
+    {        
         bulletScene = ResourceLoader.Load<PackedScene>("res://Scenes/Bullet.tscn");
         WeaponHitRate = 0.5;
         WeaponDamage = 30;

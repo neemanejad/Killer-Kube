@@ -5,7 +5,6 @@ using static IWeapon;
 
 public partial class Weapon : Node2D, IWeapon
 {
-    public string WeaponName { get; set; }
     public double WeaponDamage { get; set; }
     public double WeaponHitRate { get; set; }
     public double WeaponDamageMultiplier { get; set; }
