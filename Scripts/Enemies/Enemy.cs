@@ -14,7 +14,7 @@ public partial class Enemy : Area2D, IEnemy
     public int PointsForDeath { get; set; }
     [Export]
     public PackedScene WeaponScene { get; set; }
-    public Weapon Weapon { get; set; }
+    public Weapon CurrentWeapon { get; set; }
     public Marker2D WeaponLocation { get; set; }
     public HealthBar HealthBar { get; set; }
     public Marker2D HealthBarLocation { get; set; }

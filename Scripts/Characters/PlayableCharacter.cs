@@ -1,13 +1,16 @@
 using Godot;
 using Nova.Scripts;
 using Nova.Scripts.Character;
+using Nova.Scripts.Weapons;
 using System;
+using System.Collections.Generic;
 using static IWeapon;
 
 public partial class PlayableCharacter : Character, IPlayableCharacter
 {
     public int Score { get; set; }
     public TimeSpan SurvivalTime { get; set; }
+    public List<Weapon> Weapons { get; set; }
 
     public void UpdateScoreString()
     {
@@ -25,13 +28,25 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         // Setup health related signals
         Connect(SignalName.OnLostAllHealth, new Callable(this, MethodName.ShowGameOverScreen));
 
+        // Add all possible weapons
+        Weapons = new List<Weapon>() 
+        { 
+            ResourceLoader.Load<PackedScene>("res://Scenes/Uzi.tscn").Instantiate<Uzi>(), 
+            ResourceLoader.Load <PackedScene>("res://Scenes/Shotgun.tscn").Instantiate <Shotgun>()
+        };
+        foreach (var weapon in Weapons)
+        {
+            AddChild(weapon);
+            weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
+            weapon.Scale = new Vector2(0.2f, 0.2f);
+            weapon.Hide();
+        }
+
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
         WeaponLocation.Position = new Vector2(Position.X, Position.Y);
-        Weapon = WeaponScene.Instantiate<Weapon>();
-        Weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
-        Weapon.Scale = new Vector2((float)0.2, (float)0.2);
-        AddChild(Weapon);
+        CurrentWeapon = Weapons[0];
+        CurrentWeapon.Show();
         EnableAttack();
 
         // Initialize health bar
@@ -56,6 +71,26 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     {
         ProcessMovementInput(delta);
         ProcessMouseMovement(delta);
+        ProcessWeaponSelectionInput();
+    }
+
+    private void ProcessWeaponSelectionInput()
+    {
+        if (Input.IsActionJustPressed("weapon_1"))
+        {
+            DisableAttack();
+            CurrentWeapon.Hide();
+            CurrentWeapon = Weapons[0];
+            CurrentWeapon.Show();
+            EnableAttack();
+        } else if (Input.IsActionJustPressed("weapon_2"))
+        {
+            DisableAttack();
+            CurrentWeapon.Hide();
+            CurrentWeapon = Weapons[1];
+            CurrentWeapon.Show();
+            EnableAttack();
+        }
     }
 
     public void ProcessMovementInput(double delta)
@@ -105,31 +140,31 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 
     public void ProcessMouseMovement(double delta)
     {
-        Weapon.PointWeaponAtLocation(GlobalPosition.DirectionTo(GetGlobalMousePosition()) + Weapon.GlobalPosition);
+        CurrentWeapon.PointWeaponAtLocation(GlobalPosition.DirectionTo(GetGlobalMousePosition()) + CurrentWeapon.GlobalPosition);
         WeaponLocation.Position = Position.DirectionTo(GetGlobalMousePosition()) * 40;
-        Weapon.Position = WeaponLocation.Position;
+        CurrentWeapon.Position = WeaponLocation.Position;
 
         //// Check if weapon needs to be flipped based on the mouse location
         var relativeMouseLocation = Position.DirectionTo(GetGlobalMousePosition());
-        if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == WeaponDirection.Left)
+        if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y > 0 && CurrentWeapon.Direction == WeaponDirection.Left)
         {
             // Mouse moving from left to right below the player
-            Weapon.FlipWeaponRight();
+            CurrentWeapon.FlipWeaponRight();
         }
-        else if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y <= 0 && Weapon.Direction == WeaponDirection.Left)
+        else if (relativeMouseLocation.X >= 0 && relativeMouseLocation.Y <= 0 && CurrentWeapon.Direction == WeaponDirection.Left)
         {
             // Mouse moving from left to right above the player
-            Weapon.FlipWeaponRight();
+            CurrentWeapon.FlipWeaponRight();
         }
-        else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y > 0 && Weapon.Direction == WeaponDirection.Right)
+        else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y > 0 && CurrentWeapon.Direction == WeaponDirection.Right)
         {
             // Mouse moving from right to left below the player
-            Weapon.FlipWeaponLeft();
+            CurrentWeapon.FlipWeaponLeft();
         }
-        else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y < 0 && Weapon.Direction == WeaponDirection.Right)
+        else if (relativeMouseLocation.X < 0 && relativeMouseLocation.Y < 0 && CurrentWeapon.Direction == WeaponDirection.Right)
         {
             // Mouse moving from right to left above the player
-            Weapon.FlipWeaponLeft();
+            CurrentWeapon.FlipWeaponLeft();
         }
     }
 

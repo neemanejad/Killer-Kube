@@ -10,8 +10,7 @@ namespace Nova.Scripts
     internal interface ICharacter
     {
         public float Speed { get; set; }
-        public PackedScene WeaponScene { get; set; }
-        public Weapon Weapon { get; set; }
+        public Weapon CurrentWeapon { get; set; }
         public Marker2D WeaponLocation { get; set; }
         public HealthBar HealthBar { get; set; }
         public Marker2D HealthBarLocation { get; set; }

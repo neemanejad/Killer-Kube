@@ -5,9 +5,7 @@ public partial class Character : CharacterBody2D, ICharacter
 {
     [Export]
     public float Speed { get; set; } = 500;
-    [Export]
-    public PackedScene WeaponScene { get; set; }
-    public Weapon Weapon { get; set; }
+    public Weapon CurrentWeapon { get; set; }
     public Marker2D WeaponLocation { get; set; }
     public HealthBar HealthBar { get; set; }
     public Marker2D HealthBarLocation { get; set; }
@@ -29,12 +27,12 @@ public partial class Character : CharacterBody2D, ICharacter
 
     public void EnableAttack()
     {
-        Weapon.EnableWeaponAction();
+        CurrentWeapon.EnableWeaponAction();
     }
 
     public void DisableAttack()
     {
-        Weapon.DisableWeaponAction();
+        CurrentWeapon.DisableWeaponAction();
     }
 
     public virtual void LostAllHealth()
