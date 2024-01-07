@@ -8,7 +8,7 @@ public partial class PauseMenu : Control
 	{
 		ProcessMode = Control.ProcessModeEnum.Always;
 		GetTree().Paused = true;
-	}
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

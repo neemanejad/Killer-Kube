@@ -72,6 +72,32 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         ProcessMovementInput(delta);
         ProcessMouseMovement(delta);
         ProcessWeaponSelectionInput();
+        ProcessMenuInputs();
+    }
+
+    private void ProcessMenuInputs()
+    {
+        if (Input.IsActionJustPressed("pause"))
+        {
+            var pauseMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menus/PauseMenu.tscn");
+            var pauseMenu = pauseMenuScene.Instantiate<PauseMenu>();
+            var hud = GetNode<Control>("HUD");
+
+            pauseMenu.SetDeferred(Control.PropertyName.Size, hud.Size);
+            pauseMenu.SetDeferred(Control.PropertyName.GlobalPosition, hud.GlobalPosition);
+
+            AddChild(pauseMenu);
+        } else if (Input.IsActionJustPressed("inventory"))
+        {
+            var inventoryMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menus/InventoryMenu.tscn");
+            var inventoryMenu = inventoryMenuScene.Instantiate<InventoryMenu>();
+            var hud = GetNode<Control>("HUD");
+
+            inventoryMenu.SetDeferred(Control.PropertyName.Size, hud.Size * 0.75f);
+            inventoryMenu.SetDeferred(Control.PropertyName.GlobalPosition, hud.GlobalPosition * 0.75f);
+
+            AddChild(inventoryMenu);
+        }
     }
 
     private void ProcessWeaponSelectionInput()
@@ -96,18 +122,6 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public void ProcessMovementInput(double delta)
     {
         var velocity = Vector2.Zero;
-
-        if (Input.IsActionJustPressed("pause"))
-        {
-            var pauseMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/Menus/PauseMenu.tscn");
-            var pauseMenu = pauseMenuScene.Instantiate<PauseMenu>();
-            var hud = GetNode<Control>("HUD");
-
-            pauseMenu.SetDeferred(Control.PropertyName.Size, hud.Size);
-            pauseMenu.SetDeferred(Control.PropertyName.GlobalPosition, hud.GlobalPosition);
-
-            AddChild(pauseMenu);
-        }
 
         if (Input.IsActionPressed("move_up"))
         {

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfciapigyl2lg"]
+[gd_scene load_steps=6 format=3 uid="uid://dfciapigyl2lg"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/PlayableCharacter.cs" id="1_40qta"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_lu26h"]
-[ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/Uzi.tscn" id="2_t8k4g"]
 [ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://Scenes/HUD.tscn" id="4_i2do2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
@@ -16,7 +15,6 @@ point_count = 5
 
 [node name="PlayableCharacter" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_40qta")
-WeaponScene = ExtResource("2_t8k4g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -24.0

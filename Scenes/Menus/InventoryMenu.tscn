@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqj0y3701oenv"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryMenu.cs" id="1_2xdnf"]
+
+[node name="InventoryMenu" type="Control"]
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xdnf")
+
+[node name="InformationPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.494
+offset_bottom = -0.112
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryTabs" type="TabContainer" parent="InventoryPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.494
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 15.888
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapons" type="ItemList" parent="InventoryPanel/InventoryTabs"]
+layout_mode = 2
+allow_search = false
+item_count = 3
+max_columns = 10
+fixed_column_width = 65
+item_0/text = "Item1"
+item_1/text = "Item2"
+item_2/text = "Item3"
+
+[node name="Items" type="ItemList" parent="InventoryPanel/InventoryTabs"]
+visible = false
+layout_mode = 2
+
+[node name="Stats" type="ItemList" parent="InventoryPanel/InventoryTabs"]
+visible = false
+layout_mode = 2
