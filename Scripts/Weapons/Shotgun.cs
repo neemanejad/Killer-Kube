@@ -1,5 +1,7 @@
 using Godot;
+using Nova.Scripts.Weapons;
 using System;
+using System.Collections.Generic;
 
 public partial class Shotgun : Weapon
 {
@@ -22,14 +24,28 @@ public partial class Shotgun : Weapon
 
     public override void OnHitTimerTimeout()
     {
-        var projectile = bulletScene.Instantiate<Bullet>();
-        projectile.Speed = 1250;
-        projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
-        projectile.Scale = new Vector2(1, 1);
-        projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
-        projectile.Rotation = Rotation;
-        projectile.WeaponOfOrigin = this;
+        List<Bullet> bullets = new List<Bullet>();
+        for (int i = 0; i < 3; i++)
+        {
+            var projectile = bulletScene.Instantiate<Bullet>();
+            projectile.Speed = 1250;
+            projectile.GlobalPosition = GetNode<Marker2D>("ProjectileSpawnPoint").GlobalPosition;
+            projectile.Scale = new Vector2(1, 1);
 
-        GetTree().Root.AddChild(projectile);
+            // Randomize the projectil direction to emulate shotgun pellet spread
+            var projectileDirection = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
+            projectileDirection.X += (i % 2 == 0 ? GD.Randf() : -GD.Randf()) * 0.2f;
+            projectileDirection.Y += (i % 2 == 0 ? GD.Randf() : -GD.Randf()) * 0.2f;
+            projectile.Direction = projectileDirection.Normalized();
+            projectile.Rotation = Rotation;
+            projectile.WeaponOfOrigin = this;
+            bullets.Add(projectile);
+        }
+
+        foreach (var bullet in bullets)
+        {
+            GetTree().Root.AddChild(bullet);
+        }
+        
     }
 }
