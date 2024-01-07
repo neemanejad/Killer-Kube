@@ -46,12 +46,8 @@ grow_vertical = 2
 [node name="Weapons" type="ItemList" parent="InventoryPanel/InventoryTabs"]
 layout_mode = 2
 allow_search = false
-item_count = 3
 max_columns = 10
 fixed_column_width = 65
-item_0/text = "Item1"
-item_1/text = "Item2"
-item_2/text = "Item3"
 
 [node name="Items" type="ItemList" parent="InventoryPanel/InventoryTabs"]
 visible = false

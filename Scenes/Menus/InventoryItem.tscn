@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3fcgwvbq55w5"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryItem.cs" id="1_si0cw"]
+
+[node name="InventoryItem" type="Node2D"]
+script = ExtResource("1_si0cw")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 128.0
+offset_bottom = 128.0

@@ -9,6 +9,8 @@ public partial class Shotgun : Weapon
 
     public override void _Ready()
     {
+        WeaponName = "Shotgun";
+        
         bulletScene = ResourceLoader.Load<PackedScene>("res://Scenes/Bullet.tscn");
         WeaponHitRate = 0.5;
         WeaponDamage = 30;
@@ -47,5 +49,10 @@ public partial class Shotgun : Weapon
             GetTree().Root.AddChild(bullet);
         }
         
+    }
+
+    public override string GetWeaponName()
+    {
+        return "Shotgun";
     }
 }

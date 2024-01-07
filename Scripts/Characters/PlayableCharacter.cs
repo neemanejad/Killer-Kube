@@ -12,6 +12,8 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public TimeSpan SurvivalTime { get; set; }
     public List<Weapon> Weapons { get; set; }
 
+    public Dictionary<string, Weapon> WeaponsDictionary;
+
     public void UpdateScoreString()
     {
         GetNode<Label>("HUD/ScoreLabel").Text = string.Format("Score: {0}", Score);
@@ -32,14 +34,18 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         Weapons = new List<Weapon>() 
         { 
             ResourceLoader.Load<PackedScene>("res://Scenes/Uzi.tscn").Instantiate<Uzi>(), 
-            ResourceLoader.Load <PackedScene>("res://Scenes/Shotgun.tscn").Instantiate <Shotgun>()
+            ResourceLoader.Load<PackedScene>("res://Scenes/Shotgun.tscn").Instantiate<Shotgun>()
         };
+        WeaponsDictionary = new Dictionary<string, Weapon>();
+
         foreach (var weapon in Weapons)
         {
-            AddChild(weapon);
+            WeaponsDictionary[weapon.GetWeaponName()] = weapon;
+
             weapon.Position = GetNode<Marker2D>("WeaponLocation").Position;
             weapon.Scale = new Vector2(0.2f, 0.2f);
             weapon.Hide();
+            AddChild(weapon);
         }
 
         // Initialize and spawn weapon
@@ -200,5 +206,16 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         // Add as child of root node so the menu doesn't
         // get deleted alongside the PlayableCharacter
         GetTree().Root.AddChild(gameOverMenu);
+    }
+
+    public void SelectWeapon(string weaponName)
+    {
+        var weapon = WeaponsDictionary[weaponName];
+
+        DisableAttack();
+        CurrentWeapon.Hide();
+        CurrentWeapon = weapon;
+        CurrentWeapon.Show();
+        EnableAttack();
     }
 }

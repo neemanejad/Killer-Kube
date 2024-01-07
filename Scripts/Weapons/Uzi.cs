@@ -46,6 +46,11 @@ namespace Nova.Scripts.Weapons
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
             HitTimer.Stop();
         }
+
+        public override string GetWeaponName()
+        {
+            return "Uzi";
+        }
     }
 
 

@@ -8,7 +8,6 @@ public interface IWeapon
 		Left,
 		Right
 	}
-
 	public string WeaponName { get; set; }
 	public double WeaponDamage { get; set; }
 	public double WeaponHitRate { get; set; }
@@ -21,4 +20,5 @@ public interface IWeapon
 	public void FlipWeaponLeft();
 	public void EnableWeaponAction();
 	public void DisableWeaponAction();
+	public string GetWeaponName();
 }
