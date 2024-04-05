@@ -55,6 +55,11 @@ public partial class Enemy : Area2D, IEnemy
         {
             var bullet = area.GetNode<Bullet>(".");
             HealthBar.RemoveHealthPoints(bullet.WeaponOfOrigin.WeaponDamage);
+            var damageNumberScene = ResourceLoader.Load<PackedScene>("res://Scenes/DamageNumber.tscn");
+            var damageNumber = damageNumberScene.Instantiate<DamageNumber>();
+            damageNumber.Number = bullet.WeaponOfOrigin.WeaponDamage;
+            GetTree().Root.AddChild(damageNumber);
+            damageNumber.GlobalPosition = GlobalPosition;
 
             bullet.QueueFree();
         }

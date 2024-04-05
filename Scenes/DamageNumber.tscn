@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cssuepkfpxb3j"]
+
+[ext_resource type="Script" path="res://Scripts/DamageNumber.cs" id="1_vu8x4"]
+
+[node name="DamageNumber" type="Node2D"]
+z_index = 4096
+z_as_relative = false
+script = ExtResource("1_vu8x4")
+
+[node name="DamageNumberLabel" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 15.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VisibilityTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="VisibilityTimer" to="." method="VisibilityTimerTimeout"]
