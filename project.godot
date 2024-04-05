@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Nova"
+config/name="Killer Kube"
 run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
