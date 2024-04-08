@@ -5,6 +5,7 @@ namespace Nova.Scripts.Weapons
     public partial class Uzi : Weapon
     {
         private PackedScene bulletScene;
+        private double CriticalChance = 0.2;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -31,6 +32,9 @@ namespace Nova.Scripts.Weapons
             projectile.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition() + Position);
             projectile.Rotation = Rotation;
             projectile.WeaponOfOrigin = this;
+            projectile.IsCriticalDamage = GD.Randf() <= CriticalChance;
+            projectile.Damage = projectile.IsCriticalDamage ? WeaponDamage * 2 : WeaponDamage;
+            
 
             GetTree().Root.AddChild(projectile);
         }

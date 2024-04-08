@@ -54,10 +54,11 @@ public partial class Enemy : Area2D, IEnemy
         if (area.IsInGroup("PlayerProjectile"))
         {
             var bullet = area.GetNode<Bullet>(".");
-            HealthBar.RemoveHealthPoints(bullet.WeaponOfOrigin.WeaponDamage);
+            HealthBar.RemoveHealthPoints(bullet.Damage);
             var damageNumberScene = ResourceLoader.Load<PackedScene>("res://Scenes/DamageNumber.tscn");
             var damageNumber = damageNumberScene.Instantiate<DamageNumber>();
-            damageNumber.Number = bullet.WeaponOfOrigin.WeaponDamage;
+            damageNumber.IsCriticalDamage = bullet.IsCriticalDamage;
+            damageNumber.Number = bullet.Damage;
             GetTree().Root.AddChild(damageNumber);
             damageNumber.GlobalPosition = GlobalPosition;
 

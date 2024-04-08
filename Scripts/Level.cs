@@ -100,11 +100,11 @@ public partial class Level : Node, ILevel
     }
 
     public void MilestoneTimerTimeout()
-    { 
+    {
+        StopEnemyTimers();
+
         if (CurrentMilestoneIndex == LevelConfig.Milestones.Length - 1)
         {
-            StopEnemyTimers();
-
             // TODO: show a different screen/menu here after surviving all milestones
             return;
         }

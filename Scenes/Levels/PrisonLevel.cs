@@ -19,7 +19,7 @@ public partial class PrisonLevel : Level
                         Name = "NormalEnemey",
                         EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
-                        Speed = 350,
+                        Speed = 300,
                         HealthPoints = 50,
                         PointsForDeath = 1
                     }
@@ -34,7 +34,202 @@ public partial class PrisonLevel : Level
                         Name = "FastEnemy",
                         EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
-                        Speed = 400,
+                        Speed = 350,
+                        HealthPoints = 20,
+                        PointsForDeath = 3
+                    },
+                    new EnemyConfig
+                    {
+                        Name = "SlowHeavy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 200,
+                        HealthPoints = 200,
+                        PointsForDeath = 5
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(5),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "NormalEnemey",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(2),
+                        Speed = 300,
+                        HealthPoints = 50,
+                        PointsForDeath = 1
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(10),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "FastEnemy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 350,
+                        HealthPoints = 20,
+                        PointsForDeath = 3
+                    },
+                    new EnemyConfig
+                    {
+                        Name = "SlowHeavy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 200,
+                        HealthPoints = 200,
+                        PointsForDeath = 5
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(5),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "NormalEnemey",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(2),
+                        Speed = 300,
+                        HealthPoints = 50,
+                        PointsForDeath = 1
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(10),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "FastEnemy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 350,
+                        HealthPoints = 20,
+                        PointsForDeath = 3
+                    },
+                    new EnemyConfig
+                    {
+                        Name = "SlowHeavy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 200,
+                        HealthPoints = 200,
+                        PointsForDeath = 5
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(5),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "NormalEnemey",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(2),
+                        Speed = 300,
+                        HealthPoints = 50,
+                        PointsForDeath = 1
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(10),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "FastEnemy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 350,
+                        HealthPoints = 20,
+                        PointsForDeath = 3
+                    },
+                    new EnemyConfig
+                    {
+                        Name = "SlowHeavy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 200,
+                        HealthPoints = 200,
+                        PointsForDeath = 5
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(5),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "NormalEnemey",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(2),
+                        Speed = 300,
+                        HealthPoints = 50,
+                        PointsForDeath = 1
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(10),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "FastEnemy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 350,
+                        HealthPoints = 20,
+                        PointsForDeath = 3
+                    },
+                    new EnemyConfig
+                    {
+                        Name = "SlowHeavy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 200,
+                        HealthPoints = 200,
+                        PointsForDeath = 5
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(5),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "NormalEnemey",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(2),
+                        Speed = 300,
+                        HealthPoints = 50,
+                        PointsForDeath = 1
+                    }
+                }
+            },
+            new LevelMilestone
+            {
+                MilestoneDuration = TimeSpan.FromSeconds(10),
+                Enemies = new EnemyConfig[] {
+                    new EnemyConfig
+                    {
+                        Name = "FastEnemy",
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Enemies/Enemy.tscn"),
+                        SpawnRate = TimeSpan.FromSeconds(1),
+                        Speed = 350,
                         HealthPoints = 20,
                         PointsForDeath = 3
                     },
