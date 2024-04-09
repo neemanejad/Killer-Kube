@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd42m2v2fpp8k"]
+[gd_scene load_steps=6 format=3 uid="uid://cd42m2v2fpp8k"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/PrisonLevel.cs" id="1_itkgg"]
 [ext_resource type="Texture2D" uid="uid://dodxyenpdrgcf" path="res://Tilesets/prison_tile_sheet.png" id="2_rd51w"]
+[ext_resource type="PackedScene" uid="uid://rdxb6gt2lpha" path="res://Scenes/Chest.tscn" id="3_del4a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fnys"]
 texture = ExtResource("2_rd51w")
@@ -60,6 +61,9 @@ offset_left = -4786.0
 offset_top = -4360.0
 offset_right = 5114.0
 offset_bottom = 4155.0
+
+[node name="Chest" parent="." instance=ExtResource("3_del4a")]
+position = Vector2(-80, -128)
 
 [connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
 [connection signal="timeout" from="MilestoneTimer" to="." method="MilestoneTimerTimeout"]

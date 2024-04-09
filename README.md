@@ -22,9 +22,9 @@
 ### Milestone 2
 - Menus
   - Inventory
-    - View current items
-    - View current statuses
-    - View current attributes
+	- View current items
+	- View current statuses
+	- View current attributes
 
 ### Milestone 3
 - Levels
@@ -48,8 +48,8 @@
 ### Milestone 6
 - Menus
   - Settings
-    - Display settings
-    - Keybind settings
+	- Display settings
+	- Keybind settings
 - Support
   - Language Localization
   - Keyboard layout localization
