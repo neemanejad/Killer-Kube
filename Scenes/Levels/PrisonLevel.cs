@@ -1,4 +1,5 @@
 using Godot;
+using Killer_Kube.Scripts;
 using Nova.Scripts;
 using System;
 
@@ -250,6 +251,8 @@ public partial class PrisonLevel : Level
         {
             Milestones = milestones
         };
+
+        LootPool.CreatePool();
 
         base._Ready();
     }

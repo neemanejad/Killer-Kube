@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nova.Scripts
 {
-    internal interface ICharacter
+    public interface ICharacter
     {
         public float Speed { get; set; }
         public PackedScene WeaponScene { get; set; }
