@@ -81,9 +81,9 @@ namespace Killer_Kube.Scripts
 
     public static class LootPool
     {
-        public static Item BoostBoots = new BoostBoots(0, "BoostBoots", "Why fight when you can run?", 0.1f);
-        public static Item JitterJuice = new JitterJuice(0, "JitterJuice", "When you need that edge", 0.1f);
-        public static Item BigBalls = new BigBalls(0, "BigBalls", "Big balls, big fun", 0.3f);
+        public static Item BoostBoots = new BoostBoots(0, "BoostBoots", "Why fight when you can run?", 0.3f);
+        public static Item JitterJuice = new JitterJuice(0, "JitterJuice", "When you need that edge", 0.3f);
+        public static Item BigBalls = new BigBalls(0, "BigBalls", "Big balls, big fun", 0.5f);
 
         private static List<Item> Items = new List<Item>() { BoostBoots, JitterJuice, BigBalls };
         
@@ -119,7 +119,7 @@ namespace Killer_Kube.Scripts
                 }
             }
 
-            return null;
+            return new Optional<Item> { };
         }
     }
 

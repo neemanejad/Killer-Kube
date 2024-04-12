@@ -1,4 +1,5 @@
 using Godot;
+using Killer_Kube.Scripts;
 using Nova.Scripts;
 using Nova.Scripts.Character;
 using System;
@@ -8,15 +9,16 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 {
     public int Score { get; set; }
     public TimeSpan SurvivalTime { get; set; }
+    public HUD HUD { get; set; }
 
     public void UpdateScoreString()
     {
-        GetNode<Label>("HUD/ScoreLabel").Text = string.Format("Score: {0}", Score);
+        HUD.GetNode<Label>("ScoreLabel").Text = string.Format("Score: {0}", Score);
     }
 
     public void UpdateSurvivalTimeString()
     {
-        GetNode<Label>("HUD/SurvivalTimeLabel").Text = SurvivalTime.ToString(@"mm\:ss");
+       HUD.GetNode<Label>("SurvivalTimeLabel").Text = SurvivalTime.ToString(@"mm\:ss");
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -24,6 +26,8 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     {
         // Setup health related signals
         Connect(SignalName.OnLostAllHealth, new Callable(this, MethodName.ShowGameOverScreen));
+
+        HUD = GetNode<HUD>("HUD");
 
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
@@ -151,5 +155,10 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         // Add as child of root node so the menu doesn't
         // get deleted alongside the PlayableCharacter
         GetTree().Root.AddChild(gameOverMenu);
+    }
+
+    public void AddItem(Item item)
+    {
+        HUD.AddPopup(item);
     }
 }

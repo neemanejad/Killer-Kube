@@ -26,7 +26,7 @@ public partial class Chest : Area2D
 			Optional<Item> item = LootPool.GetRandomItemFromPool();
 			if (item.HasValue)
 			{
-				GD.Print(item.Value);
+				(body as PlayableCharacter).AddItem(item.Value);
 			}
 			QueueFree();
         }

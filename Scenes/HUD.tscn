@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://celh8eskjal8l"]
 
+[ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_145sv"]
 [ext_resource type="FontFile" uid="uid://dvyh4upxtekj6" path="res://fonts/SpaceMono-Regular.ttf" id="1_acgod"]
-[ext_resource type="PackedScene" uid="uid://bcjy4ohbnxdvc" path="res://Scenes/ItemPopup.tscn" id="2_gn00o"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_145sv")
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 1
@@ -36,7 +37,5 @@ text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemPopup" parent="." instance=ExtResource("2_gn00o")]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
+[node name="PopupTimer" type="Timer" parent="."]
+wait_time = 7.0

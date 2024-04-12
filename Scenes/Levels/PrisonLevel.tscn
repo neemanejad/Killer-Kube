@@ -62,8 +62,37 @@ offset_top = -4360.0
 offset_right = 5114.0
 offset_bottom = 4155.0
 
-[node name="Chest" parent="." instance=ExtResource("3_del4a")]
-position = Vector2(-80, -128)
+[node name="Chest" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(-164.103, -598.423)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest2" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(-205.128, -331.756)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest4" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(471.795, -516.372)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest5" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(-717.949, -598.423)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest6" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(266.667, -1172.78)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest7" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(-205.128, -1562.53)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest8" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(923.077, -1254.83)
+scale = Vector2(2.5641, 2.5641)
+
+[node name="Chest3" parent="TileMap" instance=ExtResource("3_del4a")]
+position = Vector2(-731.098, -1182.41)
+scale = Vector2(2.5641, 2.5641)
 
 [connection signal="timeout" from="EnemySpawnRate" to="." method="SpawnEnemy"]
 [connection signal="timeout" from="MilestoneTimer" to="." method="MilestoneTimerTimeout"]
