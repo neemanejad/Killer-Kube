@@ -10,6 +10,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public int Score { get; set; }
     public TimeSpan SurvivalTime { get; set; }
     public HUD HUD { get; set; }
+    public Inventory Inventory { get; set; }
 
     public void UpdateScoreString()
     {
@@ -28,6 +29,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         Connect(SignalName.OnLostAllHealth, new Callable(this, MethodName.ShowGameOverScreen));
 
         HUD = GetNode<HUD>("HUD");
+        Inventory = GetNode<Inventory>("Inventory");
 
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
@@ -159,6 +161,6 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 
     public void AddItem(Item item)
     {
-        HUD.AddPopup(item);
+        Inventory.AddItem(item);
     }
 }

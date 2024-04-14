@@ -11,81 +11,13 @@ using System.Threading.Tasks;
 
 namespace Killer_Kube.Scripts
 {
-    public abstract class Item
-    {
-        public readonly int Id;
-        public readonly string Name;
-        public readonly string Description;
-        public readonly float DropChance;
-        public Item(int Id, string Name, string Description, float DropChance)
-        {
-            this.Id = Id;
-            this.Name = Name;
-            this.Description = Description;
-            this.DropChance = DropChance;
-        }
-        public virtual void AddItemToCharacter(ICharacter character) { throw new NotImplementedException(); }
-        public virtual void RemoveItemFromCharacter(ICharacter character) { throw new NotImplementedException(); }
-    }
-
-    class BoostBoots : Item
-    {
-        public BoostBoots(int Id, string Name, string Description, float DropChance) : base(Id, Name, Description, DropChance)
-        {
-        }
-
-        public override void AddItemToCharacter(ICharacter character)
-        {
-            base.AddItemToCharacter(character);
-        }
-
-        public override void RemoveItemFromCharacter(ICharacter character)
-        {
-            base.RemoveItemFromCharacter(character);
-        }
-    }
-
-    class JitterJuice : Item
-    {
-        public JitterJuice(int Id, string Name, string Description, float DropChance) : base(Id, Name, Description, DropChance)
-        {
-        }
-
-        public override void AddItemToCharacter(ICharacter character)
-        {
-            base.AddItemToCharacter(character);
-        }
-
-        public override void RemoveItemFromCharacter(ICharacter character)
-        {
-            base.RemoveItemFromCharacter(character);
-        }
-    }
-
-    class BigBalls : Item
-    {
-        public BigBalls(int Id, string Name, string Description, float DropChance) : base(Id, Name, Description, DropChance)
-        {
-        }
-
-        public override void AddItemToCharacter(ICharacter character)
-        {
-            base.AddItemToCharacter(character);
-        }
-
-        public override void RemoveItemFromCharacter(ICharacter character)
-        {
-            base.RemoveItemFromCharacter(character);
-        }
-    }
-
     public static class LootPool
     {
-        public static Item BoostBoots = new BoostBoots(0, "BoostBoots", "Why fight when you can run?", 0.3f);
-        public static Item JitterJuice = new JitterJuice(0, "JitterJuice", "When you need that edge", 0.3f);
-        public static Item BigBalls = new BigBalls(0, "BigBalls", "Big balls, big fun", 0.5f);
+        public static Item BoostBoots = new Item(0, "BoostBoots", "Why fight when you can run?", 1f, null);
+        public static Item JitterJuice = new Item(0, "JitterJuice", "When you need that edge", 1f, null);
+        public static Item ProsperityPants = new Item(0, "ProsperityPants", "Pants with bottomless pockets", 1f, null);
 
-        private static List<Item> Items = new List<Item>() { BoostBoots, JitterJuice, BigBalls };
+        private static List<Item> Items = new List<Item>() { BoostBoots, JitterJuice, ProsperityPants };
         
         public static SortedDictionary<float, List<Item>> Pool = new SortedDictionary<float, List<Item>>();
 

@@ -1,5 +1,8 @@
 using Godot;
+using Killer_Kube.Scripts;
 using Nova.Scripts;
+using System;
+using System.Collections.Generic;
 
 public partial class Character : CharacterBody2D, ICharacter
 {

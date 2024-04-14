@@ -1,7 +1,9 @@
 using Godot;
+using Killer_Kube.Scripts;
 using Nova.Scripts;
 using Nova.Scripts.Enemies;
 using System;
+using System.Collections.Generic;
 
 public partial class Enemy : Area2D, IEnemy
 {
@@ -21,6 +23,7 @@ public partial class Enemy : Area2D, IEnemy
     [Export]
     public double HealthPoints { get; set; }
     public Timer HitTimer { get; set; }
+    public Dictionary<string, InventoryItem> InventoryItems { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -93,5 +96,15 @@ public partial class Enemy : Area2D, IEnemy
     {
         EmitSignal(SignalName.EnemyLostAllHealth, this);
         QueueFree();
+    }
+
+    public void AddItem(Item item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void RemoveItem(Item item)
+    {
+        throw new NotImplementedException();
     }
 }
