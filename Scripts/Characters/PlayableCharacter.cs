@@ -11,6 +11,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public TimeSpan SurvivalTime { get; set; }
     public HUD HUD { get; set; }
     public Inventory Inventory { get; set; }
+    public ItemPopupHUD ItemPopupHUD { get; set; }
 
     public void UpdateScoreString()
     {
@@ -30,6 +31,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 
         HUD = GetNode<HUD>("HUD");
         Inventory = GetNode<Inventory>("Inventory");
+        ItemPopupHUD = GetNode<ItemPopupHUD>("ItemPopupHUD");
 
         // Initialize and spawn weapon
         WeaponLocation = GetNode<Marker2D>("WeaponLocation");
@@ -161,6 +163,6 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
 
     public void AddItem(Item item)
     {
-        Inventory.AddItem(item);
+        ItemPopupHUD.AddItem(item);
     }
 }

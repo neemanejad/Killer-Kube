@@ -15,20 +15,23 @@ size_flags_vertical = 4
 script = ExtResource("1_145sv")
 
 [node name="ScoreLabel" type="Label" parent="."]
+z_index = 4096
+z_as_relative = false
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -68.0
-offset_right = 68.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -136.0
 offset_bottom = 48.0
-grow_horizontal = 2
+grow_horizontal = 0
 theme_override_fonts/font = ExtResource("1_acgod")
 text = "Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SurvivalTimeLabel" type="Label" parent="."]
+z_index = 4096
+z_as_relative = false
 layout_mode = 1
 offset_right = 104.0
 offset_bottom = 48.0

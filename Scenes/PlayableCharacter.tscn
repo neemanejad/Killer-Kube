@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfciapigyl2lg"]
+[gd_scene load_steps=9 format=3 uid="uid://dfciapigyl2lg"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/PlayableCharacter.cs" id="1_40qta"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Scenes/HealthBar.tscn" id="2_lu26h"]
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Scenes/Uzi.tscn" id="2_t8k4g"]
 [ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://Scenes/HUD.tscn" id="4_i2do2"]
-[ext_resource type="PackedScene" uid="uid://cu72qg8s0x7q" path="res://Scenes/Inventory.tscn" id="5_nls40"]
+[ext_resource type="PackedScene" uid="uid://cu72qg8s0x7q" path="res://Scenes/ItemPopupHUD.tscn" id="5_nls40"]
+[ext_resource type="PackedScene" uid="uid://rt5ayp2sfjeo" path="res://Scenes/Inventory.tscn" id="6_wpft4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
 size = Vector2(47.9525, 48)
@@ -57,11 +58,13 @@ offset_bottom = 648.0
 
 [node name="SurvivalTimer" type="Timer" parent="."]
 
-[node name="Inventory" parent="." instance=ExtResource("5_nls40")]
+[node name="ItemPopupHUD" parent="." instance=ExtResource("5_nls40")]
 offset_left = -1152.0
 offset_top = -648.0
 offset_right = 1152.0
 offset_bottom = 648.0
+
+[node name="Inventory" parent="." instance=ExtResource("6_wpft4")]
 
 [connection signal="LostAllHealth" from="HealthBar" to="." method="LostAllHealth"]
 [connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]
