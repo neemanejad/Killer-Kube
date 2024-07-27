@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rdxb6gt2lpha"]
+
+[ext_resource type="Script" path="res://Items/Chest.cs" id="1_2cdce"]
+[ext_resource type="Texture2D" uid="uid://csxldu3t6uuu1" path="res://art/aseprite/chest.png" id="2_5kd3r"]
+
+[node name="Chest" type="Area2D"]
+script = ExtResource("1_2cdce")
+
+[node name="ChestSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.34375, 0.304688)
+texture = ExtResource("2_5kd3r")
+
+[node name="ChestCollision" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.34375, 0.304688)
+polygon = PackedVector2Array(91, -91, 91, 89, -91, 89, -91, -90.2, -89, -91.2, -89, -93)
