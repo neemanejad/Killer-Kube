@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Weapons/Uzi.tscn" id="2_ow14r"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Characters/HealthBar.tscn" id="3_7bhxb"]
 [ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://HUD/HUD.tscn" id="4_42tad"]
-[ext_resource type="PackedScene" uid="uid://cu72qg8s0x7q" path="res://Items/ItemPopupHUD.tscn" id="5_3s5w2"]
-[ext_resource type="PackedScene" uid="uid://rt5ayp2sfjeo" path="res://Items/Inventory.tscn" id="6_hdqei"]
+[ext_resource type="PackedScene" uid="uid://rt5ayp2sfjeo" path="res://Items/Inventory.tscn" id="6_5pw5k"]
+[ext_resource type="PackedScene" uid="uid://blir7ydrnm5pl" path="res://Items/ItemPopupHUD.tscn" id="6_hdqei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
 size = Vector2(47.9525, 48)
@@ -58,13 +58,14 @@ offset_bottom = 648.0
 
 [node name="SurvivalTimer" type="Timer" parent="."]
 
-[node name="ItemPopupHUD" parent="." instance=ExtResource("5_3s5w2")]
+[node name="Inventory" parent="." instance=ExtResource("6_5pw5k")]
+
+[node name="ItemPopupHUD" parent="." instance=ExtResource("6_hdqei")]
+custom_minimum_size = Vector2(-0.51, 0)
 offset_left = -1152.0
 offset_top = -648.0
 offset_right = 1152.0
 offset_bottom = 648.0
-
-[node name="Inventory" parent="." instance=ExtResource("6_hdqei")]
 
 [connection signal="LostAllHealth" from="HealthBar" to="." method="LostAllHealth"]
 [connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]

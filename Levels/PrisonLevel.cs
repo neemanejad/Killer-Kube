@@ -18,7 +18,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "NormalEnemey",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/NormalEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 300,
                         HealthPoints = 50,
@@ -33,7 +33,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/SmallFastEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 350,
                         HealthPoints = 20,
@@ -42,7 +42,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "SlowHeavy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/BigSlowEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 200,
                         HealthPoints = 200,
@@ -57,7 +57,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "NormalEnemey",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/NormalEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 300,
                         HealthPoints = 50,
@@ -72,7 +72,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/SmallFastEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 350,
                         HealthPoints = 20,
@@ -81,7 +81,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "SlowHeavy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/BigSlowEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 200,
                         HealthPoints = 200,
@@ -96,7 +96,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "NormalEnemey",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/NormalEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 300,
                         HealthPoints = 50,
@@ -111,7 +111,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/SmallFastEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 350,
                         HealthPoints = 20,
@@ -120,7 +120,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "SlowHeavy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/BigSlowEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 200,
                         HealthPoints = 200,
@@ -135,7 +135,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "NormalEnemey",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/NormalEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 300,
                         HealthPoints = 50,
@@ -150,7 +150,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/SmallFastEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 350,
                         HealthPoints = 20,
@@ -159,7 +159,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "SlowHeavy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/BigSlowEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 200,
                         HealthPoints = 200,
@@ -174,7 +174,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "NormalEnemey",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/NormalEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 300,
                         HealthPoints = 50,
@@ -189,7 +189,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/SmallFastEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 350,
                         HealthPoints = 20,
@@ -198,7 +198,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "SlowHeavy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/BigSlowEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 200,
                         HealthPoints = 200,
@@ -213,7 +213,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "NormalEnemey",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/NormalEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(2),
                         Speed = 300,
                         HealthPoints = 50,
@@ -228,7 +228,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "FastEnemy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/SmallFastEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 350,
                         HealthPoints = 20,
@@ -237,7 +237,7 @@ public partial class PrisonLevel : Level
                     new EnemyConfig
                     {
                         Name = "SlowHeavy",
-                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/Enemy.tscn"),
+                        EnemyScene = ResourceLoader.Load<PackedScene>("res://Characters/Enemies/BigSlowEnemy.tscn"),
                         SpawnRate = TimeSpan.FromSeconds(1),
                         Speed = 200,
                         HealthPoints = 200,

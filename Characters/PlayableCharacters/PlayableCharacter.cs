@@ -10,7 +10,6 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public int Score { get; set; }
     public TimeSpan SurvivalTime { get; set; }
     public HUD HUD { get; set; }
-    public Inventory Inventory { get; set; }
     public ItemPopupHUD ItemPopupHUD { get; set; }
 
     public void UpdateScoreString()
@@ -30,7 +29,6 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         Connect(SignalName.OnLostAllHealth, new Callable(this, MethodName.ShowGameOverScreen));
 
         HUD = GetNode<HUD>("HUD");
-        Inventory = GetNode<Inventory>("Inventory");
         ItemPopupHUD = GetNode<ItemPopupHUD>("ItemPopupHUD");
 
         // Initialize and spawn weapon
@@ -151,7 +149,6 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     {
         var gameOverMenuScene = ResourceLoader.Load<PackedScene>("res://Menus/GameOverMenu.tscn");
         var gameOverMenu = gameOverMenuScene.Instantiate<GameOverMenu>();
-        var hud = GetNode<Control>("HUD");
 
         gameOverMenu.SetDeferred(Control.PropertyName.Size, GetViewportRect().Size);
         gameOverMenu.SetDeferred(Control.PropertyName.GlobalPosition, GetViewportRect().Position);
