@@ -13,7 +13,7 @@ namespace Nova.Scripts.Character
         public TimeSpan SurvivalTime { get; set; }
         public void UpdateScoreString();
         public void UpdateSurvivalTimeString();
-        public void ProcessMovementInput(double delta);
+        public void ProcessKeyboardInput(double delta);
         public void ProcessMouseMovement(double delta);
         public void KilledEnemy(Enemy enemy);
     }

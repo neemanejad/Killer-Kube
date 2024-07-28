@@ -3,7 +3,7 @@ using Killer_Kube.Scripts;
 using System;
 using System.Collections.Generic;
 
-public partial class Inventory : Node
+public partial class Inventory : Control
 {
     public Dictionary<string, InventoryItem> InventoryItems { get; set; } = new Dictionary<string, InventoryItem>();
 	public InventoryHUD InventoryHUD { get; set; }
@@ -12,13 +12,18 @@ public partial class Inventory : Node
     public override void _Ready()
 	{
 		InventoryHUD = GetNode<InventoryHUD>("InventoryHUD");
+		ProcessMode = ProcessModeEnum.Always;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
-	}
+        if (Input.IsActionJustPressed("inventory"))
+        {
+            Visible = !Visible;
+            GetTree().Paused = Visible;
+        }
+    }
 
 	public void AddInventoryItem(Item item)
 	{
@@ -32,4 +37,14 @@ public partial class Inventory : Node
 			InventoryItems.Add(item.Name, new InventoryItem(item));
         }
     }
+
+	private void AddInventoryItemToHUD(Item item)
+	{
+		throw new NotImplementedException();
+	}
+
+	public void ToggleInventoryVisibility()
+	{
+		InventoryHUD.Visible = !InventoryHUD.Visible;
+	}
 }

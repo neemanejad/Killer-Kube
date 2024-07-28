@@ -63,11 +63,11 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        ProcessMovementInput(delta);
+        ProcessKeyboardInput(delta);
         ProcessMouseMovement(delta);
     }
 
-    public void ProcessMovementInput(double delta)
+    public void ProcessKeyboardInput(double delta)
     {
         var velocity = Vector2.Zero;
 
