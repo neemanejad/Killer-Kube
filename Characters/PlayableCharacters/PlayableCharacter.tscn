@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Weapons/Uzi.tscn" id="2_ow14r"]
 [ext_resource type="PackedScene" uid="uid://cuqmxoiiyrjuj" path="res://Characters/HealthBar.tscn" id="3_7bhxb"]
 [ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://HUD/HUD.tscn" id="4_42tad"]
-[ext_resource type="PackedScene" uid="uid://rt5ayp2sfjeo" path="res://Items/Inventory.tscn" id="6_5pw5k"]
+[ext_resource type="PackedScene" uid="uid://rt5ayp2sfjeo" path="res://Inventory/Inventory.tscn" id="5_oemca"]
 [ext_resource type="PackedScene" uid="uid://blir7ydrnm5pl" path="res://Items/ItemPopupHUD.tscn" id="6_hdqei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
@@ -58,7 +58,7 @@ offset_bottom = 648.0
 
 [node name="SurvivalTimer" type="Timer" parent="."]
 
-[node name="Inventory" parent="." instance=ExtResource("6_5pw5k")]
+[node name="Inventory" parent="." instance=ExtResource("5_oemca")]
 
 [node name="ItemPopupHUD" parent="." instance=ExtResource("6_hdqei")]
 custom_minimum_size = Vector2(-0.51, 0)

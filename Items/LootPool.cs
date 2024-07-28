@@ -13,12 +13,18 @@ namespace Killer_Kube.Scripts
 {
     public static class LootPool
     {
-        public static Item BoostBoots = new Item(0, "BoostBoots", "Why fight when you can run?", 1f, null);
-        public static Item JitterJuice = new Item(0, "JitterJuice", "When you need that edge", 1f, null);
-        public static Item ProsperityPants = new Item(0, "ProsperityPants", "Pants with bottomless pockets", 1f, null);
+        private static List<Item> Items = new List<Item>() {
+            new Item(0, "Boost Boots", "Move 10% faster", 1f, null, (PlayableCharacter character) =>
+            {
+                character.Speed *= 1.1f;
+            }),
+            new Item(0, "Trigger Finger", "Shoot 5% faster", 1f, null, (PlayableCharacter character) =>
+            {
+                character.Weapon.WeaponHitRate *= 0.95;
+                character.Weapon.HitTimer.WaitTime = character.Weapon.WeaponHitRate;
+            })
+        };
 
-        private static List<Item> Items = new List<Item>() { BoostBoots, JitterJuice, ProsperityPants };
-        
         public static SortedDictionary<float, List<Item>> Pool = new SortedDictionary<float, List<Item>>();
 
         public static void CreatePool()
@@ -55,5 +61,5 @@ namespace Killer_Kube.Scripts
         }
     }
 
-    
+
 }

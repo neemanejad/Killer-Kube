@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace Killer_Kube.Scripts
 {
+    public delegate void ItemEffectHandler(PlayableCharacter character);
+
     public class InventoryItem
     {
         public int Count { get; set; }
-        public Item ItemRef { get; set; }
-        public InventoryItem(ref Item item)
+        public Item Item { get; set; }
+        public InventoryItem(Item item)
         {
             Count = 0;
-            ItemRef = item;
+            Item = item;
         }
     }
 
@@ -26,13 +28,15 @@ namespace Killer_Kube.Scripts
         public readonly string Description;
         public readonly float DropChance;
         public readonly PackedScene ItemScene;
-        public Item(int Id, string Name, string Description, float DropChance, PackedScene itemScene)
+        public readonly ItemEffectHandler ItemEffectHandler;
+        public Item(int Id, string Name, string Description, float DropChance, PackedScene ItemScene, ItemEffectHandler ItemEffectHandler)
         {
             this.Id = Id;
             this.Name = Name;
             this.Description = Description;
             this.DropChance = DropChance;
-            ItemScene = itemScene;
+            this.ItemScene = ItemScene;
+            this.ItemEffectHandler = ItemEffectHandler;
         }
     }
 }

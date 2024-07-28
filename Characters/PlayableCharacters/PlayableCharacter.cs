@@ -11,6 +11,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public TimeSpan SurvivalTime { get; set; }
     public HUD HUD { get; set; }
     public ItemPopupHUD ItemPopupHUD { get; set; }
+    public Inventory Inventory { get; set; }
 
     public void UpdateScoreString()
     {
@@ -44,6 +45,8 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         HealthBar = GetNode<HealthBar>("HealthBar");
         HealthBar.Health = HealthPoints;
         HealthBar.MaxHealth = HealthPoints;
+
+        Inventory = GetNode<Inventory>("Inventory");
 
         GetNode<Timer>("SurvivalTimer").Start();
 
@@ -161,5 +164,15 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
     public void AddItem(Item item)
     {
         ItemPopupHUD.AddItem(item);
+        Inventory.AddInventoryItem(item);
+        UpdateCharacterStatsFromItems(new string[] { item.Name });
+    }
+
+    private void UpdateCharacterStatsFromItems(string[] itemNames)
+    {
+        foreach (var name in itemNames)
+        {
+            Inventory.InventoryItems[name].Item.ItemEffectHandler(this);
+        }
     }
 }
