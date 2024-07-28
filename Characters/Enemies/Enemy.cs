@@ -37,7 +37,7 @@ public partial class Enemy : Area2D, IEnemy
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (Globals.Target == null) return;
+        if (Globals.Target == null || !IsInstanceValid(Globals.Target)) return;
 
         GlobalPosition += (GlobalPosition.DirectionTo(Globals.Target.GlobalPosition) * (float)delta * Speed);
     }

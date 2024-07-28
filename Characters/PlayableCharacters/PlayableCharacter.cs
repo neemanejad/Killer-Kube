@@ -45,8 +45,14 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         HealthBar = GetNode<HealthBar>("HealthBar");
         HealthBar.Health = HealthPoints;
         HealthBar.MaxHealth = HealthPoints;
+        HealthBar.Connect(HealthBar.SignalName.HealthChanged, new Callable(this, MethodName.OnHealthChange));
 
         Inventory = GetNode<Inventory>("Inventory");
+
+        for (int i = 0; i < Inventory.InventoryHUD.Stats.Count; i++)
+        {
+            Inventory.InventoryHUD.StatsList.AddItem(Inventory.InventoryHUD.Stats[i].GetPlayerStatHandler(this));
+        }
 
         GetNode<Timer>("SurvivalTimer").Start();
 
@@ -166,6 +172,7 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         ItemPopupHUD.AddItem(item);
         Inventory.AddInventoryItem(item);
         UpdateCharacterStatsFromItems(new string[] { item.Name });
+        UpdateStatsUI();
     }
 
     private void UpdateCharacterStatsFromItems(string[] itemNames)
@@ -174,5 +181,25 @@ public partial class PlayableCharacter : Character, IPlayableCharacter
         {
             Inventory.InventoryItems[name].Item.ItemEffectHandler(this);
         }
+
+        for (int i = 0; i < Inventory.InventoryHUD.StatsList.ItemCount; i++)
+        {
+            Inventory.InventoryHUD.StatsList.SetItemText(i, Inventory.InventoryHUD.Stats[i].GetPlayerStatHandler(this));
+
+        }
+    }
+
+    private void UpdateStatsUI()
+    {
+        for (int i = 0; i < Inventory.InventoryHUD.StatsList.ItemCount; i++)
+        {
+            Inventory.InventoryHUD.StatsList.SetItemText(i, Inventory.InventoryHUD.Stats[i].GetPlayerStatHandler(this));
+
+        }
+    }
+
+    private void OnHealthChange()
+    {
+        UpdateStatsUI();
     }
 }

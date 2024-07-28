@@ -1,4 +1,5 @@
 using Godot;
+using Nova.Scripts;
 using System;
 
 public partial class PauseMenu : Control
