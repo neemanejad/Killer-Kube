@@ -18,7 +18,7 @@ public partial class Inventory : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("inventory"))
+        if (Input.IsActionJustPressed("inventory") || (Visible && Input.IsActionJustPressed("pause")))
         {
             Visible = !Visible;
             GetTree().Paused = Visible;
@@ -32,15 +32,16 @@ public partial class Inventory : Control
 		{
 			InventoryItems[item.Name].Count++;
 		}
-        else
-        {
-			InventoryItems.Add(item.Name, new InventoryItem(item));
-        }
+		else
+		{
+			InventoryItems.Add(item.Name, new InventoryItem(InventoryItems.Count, item));
+		}
+		AddInventoryItemToHUD(item);
     }
 
 	private void AddInventoryItemToHUD(Item item)
 	{
-		throw new NotImplementedException();
+		InventoryHUD.AddInventoryItem(InventoryItems[item.Name]);
 	}
 
 	public void ToggleInventoryVisibility()

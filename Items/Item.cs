@@ -12,11 +12,16 @@ namespace Killer_Kube.Scripts
 
     public class InventoryItem
     {
+        /// <summary>
+        /// The order in which this inventory item was received.
+        /// </summary>
+        public int OrderReceived;
         public int Count { get; set; }
         public Item Item { get; set; }
-        public InventoryItem(Item item)
+        public InventoryItem(int orderReceived, Item item)
         {
-            Count = 0;
+            OrderReceived = orderReceived;
+            Count = 1;
             Item = item;
         }
     }

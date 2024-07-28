@@ -13,6 +13,7 @@ public partial class ItemPopupHUD : Control
     {
         PopupTimer = GetNode<Timer>("ItemPopupTimer");
         PopupTimer.Connect(Timer.SignalName.Timeout, new Callable(this, MethodName.RemovePopup));
+        ProcessMode = ProcessModeEnum.Always;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
