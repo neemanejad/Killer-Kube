@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rt5ayp2sfjeo"]
+[gd_scene load_steps=4 format=3 uid="uid://rt5ayp2sfjeo"]
 
 [ext_resource type="Script" path="res://Inventory/Inventory.cs" id="1_h1hp4"]
 [ext_resource type="Script" path="res://Inventory/InventoryHUD.cs" id="2_0djju"]
+[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Themes/MenuTheme.tres" id="3_g4fd0"]
 
 [node name="Inventory" type="Control"]
 z_index = 4096
@@ -39,6 +40,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme = ExtResource("3_g4fd0")
+theme_override_font_sizes/font_size = 24
 allow_search = false
 
 [node name="StatsList" type="ItemList" parent="InventoryHUD"]
@@ -53,3 +56,5 @@ offset_right = 0.511993
 offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g4fd0")
+theme_override_font_sizes/font_size = 24

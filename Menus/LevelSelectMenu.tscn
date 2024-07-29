@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnu303sujjb0"]
 
 [ext_resource type="Script" path="res://Menus/LevelSelectMenu.cs" id="1_3m542"]
-[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Menus/MenuTheme.tres" id="1_bjix5"]
+[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Themes/MenuTheme.tres" id="1_bjix5"]
 [ext_resource type="Script" path="res://Menus/LevelOption.cs" id="2_817gc"]
 [ext_resource type="PackedScene" uid="uid://cd42m2v2fpp8k" path="res://Levels/PrisonLevel.tscn" id="3_6s7jq"]
 
@@ -27,6 +27,7 @@ offset_right = 384.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_bjix5")
 script = ExtResource("2_817gc")
 Level = ExtResource("3_6s7jq")
 

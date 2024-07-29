@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwi8lwibotbw5"]
 
 [ext_resource type="Script" path="res://Menus/PauseMenu.cs" id="1_hbhg0"]
-[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Menus/MenuTheme.tres" id="2_cpph2"]
+[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Themes/MenuTheme.tres" id="2_cpph2"]
 
 [node name="PauseMenu" type="Control"]
 top_level = true

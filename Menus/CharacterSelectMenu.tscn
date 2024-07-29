@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdqbvh5un67it"]
 
 [ext_resource type="Script" path="res://Menus/CharacterSelectMenu.cs" id="1_rn1jq"]
-[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Menus/MenuTheme.tres" id="1_yq3gm"]
+[ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Themes/MenuTheme.tres" id="1_yq3gm"]
 [ext_resource type="Script" path="res://Menus/CharacterOption.cs" id="3_mowkf"]
 [ext_resource type="PackedScene" uid="uid://dfciapigyl2lg" path="res://Characters/PlayableCharacters/PlayableCharacter.tscn" id="4_e1gyn"]
 
@@ -36,6 +36,7 @@ offset_right = 206.0
 offset_bottom = -28.09
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_yq3gm")
 text = "Base Character"
 script = ExtResource("3_mowkf")
 Character = ExtResource("4_e1gyn")

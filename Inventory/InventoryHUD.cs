@@ -12,9 +12,9 @@ public partial class InventoryHUD : Control
 	public ItemList StatsList { get; set; }
 	public Dictionary<int, PlayerStat> Stats = new Dictionary<int, PlayerStat>()
 	{
-		{ 0, new PlayerStat("Health", (PlayableCharacter character) => $"Health: {character.HealthBar.Health.ToString()}/{ character.HealthBar.MaxHealth.ToString()}") },
-		{ 1, new PlayerStat("Speed", (PlayableCharacter character) => $"Speed: {character.Speed.ToString()}" ) },
-		{ 2, new PlayerStat("Fire Rate", (PlayableCharacter character) => $"Fire rate: {character.Weapon.WeaponHitRate.ToString()}" ) }
+		{ 0, new PlayerStat("Health", (PlayableCharacter character) => $"Health: {Math.Ceiling(character.HealthBar.Health)}/{ Math.Ceiling(character.HealthBar.MaxHealth)}") },
+		{ 1, new PlayerStat("Speed", (PlayableCharacter character) => $"Speed: {Math.Ceiling(character.Speed)}" ) },
+		{ 2, new PlayerStat("Fire Rate", (PlayableCharacter character) => $"Fire rate: { Math.Ceiling(60 / character.Weapon.WeaponHitRate)} BPM") }
 	};
 
 	// Called when the node enters the scene tree for the first time.

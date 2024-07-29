@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://cg4hdyi8jj1fl"]
 
-[ext_resource type="FontFile" uid="uid://2jrkt76g27wx" path="res://fonts/SpaceMono-Bold.ttf" id="1_evqys"]
+[ext_resource type="FontFile" uid="uid://dl1i7jyik7ivi" path="res://fonts/PixelifySans-Medium.ttf" id="1_ogu4l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ut74d"]
 
@@ -26,7 +26,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
-Button/fonts/font = ExtResource("1_evqys")
+default_font = ExtResource("1_ogu4l")
+Button/fonts/font = ExtResource("1_ogu4l")
 Button/styles/focus = SubResource("StyleBoxEmpty_ut74d")
 Button/styles/hover = SubResource("StyleBoxFlat_xr4at")
 Button/styles/normal = SubResource("StyleBoxFlat_26tac")
