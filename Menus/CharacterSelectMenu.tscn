@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdqbvh5un67it"]
+[gd_scene load_steps=7 format=3 uid="uid://cdqbvh5un67it"]
 
 [ext_resource type="Script" path="res://Menus/CharacterSelectMenu.cs" id="1_rn1jq"]
 [ext_resource type="Theme" uid="uid://cg4hdyi8jj1fl" path="res://Themes/MenuTheme.tres" id="1_yq3gm"]
 [ext_resource type="Script" path="res://Menus/CharacterOption.cs" id="3_mowkf"]
 [ext_resource type="PackedScene" uid="uid://dfciapigyl2lg" path="res://Characters/PlayableCharacters/PlayableCharacter.tscn" id="4_e1gyn"]
+[ext_resource type="PackedScene" uid="uid://bqmrrv87ygkre" path="res://Characters/PlayableCharacters/SlowBulkyCharacter.tscn" id="5_jk8wv"]
+[ext_resource type="PackedScene" uid="uid://dloju02h7riiv" path="res://Characters/PlayableCharacters/FastSmallCharacter.tscn" id="6_cm2mg"]
 
 [node name="CharacterSelectMenu" type="Control"]
 layout_mode = 3
@@ -30,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -206.0
-offset_top = -82.09
-offset_right = 206.0
-offset_bottom = -28.09
+offset_left = -208.0
+offset_top = -196.0
+offset_right = 204.0
+offset_bottom = -142.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yq3gm")
@@ -41,6 +43,46 @@ text = "Base Character"
 script = ExtResource("3_mowkf")
 Character = ExtResource("4_e1gyn")
 
+[node name="CharacterOptionTwo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -124.0
+offset_right = 204.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yq3gm")
+text = "Bulky Character"
+script = ExtResource("3_mowkf")
+Character = ExtResource("5_jk8wv")
+
+[node name="CharacterOptionThree" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -52.0
+offset_right = 204.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yq3gm")
+text = "Fast Character"
+script = ExtResource("3_mowkf")
+Character = ExtResource("6_cm2mg")
+
 [connection signal="button_up" from="Button" to="." method="BackButtonUp"]
 [connection signal="CharacterOptionSelected" from="CharacterOptionOne" to="." method="CharacterOptionButtonUp"]
 [connection signal="button_up" from="CharacterOptionOne" to="CharacterOptionOne" method="CharacterOptionButtonUp"]
+[connection signal="CharacterOptionSelected" from="CharacterOptionTwo" to="." method="CharacterOptionButtonUp"]
+[connection signal="button_up" from="CharacterOptionTwo" to="CharacterOptionTwo" method="CharacterOptionButtonUp"]
+[connection signal="CharacterOptionSelected" from="CharacterOptionThree" to="." method="CharacterOptionButtonUp"]
+[connection signal="button_up" from="CharacterOptionThree" to="CharacterOptionThree" method="CharacterOptionButtonUp"]
