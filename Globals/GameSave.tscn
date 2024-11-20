@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://come08lkkfd3c"]
+
+[ext_resource type="Script" path="res://Globals/GameSave.cs" id="1_yjj6r"]
+
+[node name="GameSave" type="Node"]
+script = ExtResource("1_yjj6r")
