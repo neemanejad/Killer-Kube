@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqmrrv87ygkre"]
+[gd_scene load_steps=10 format=3 uid="uid://bqmrrv87ygkre"]
 
 [ext_resource type="Script" path="res://Characters/PlayableCharacters/PlayableCharacter.cs" id="1_f0t7g"]
 [ext_resource type="PackedScene" uid="uid://cpr31tetvfn3u" path="res://Weapons/Uzi.tscn" id="2_w8hep"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://celh8eskjal8l" path="res://HUD/HUD.tscn" id="4_q8o82"]
 [ext_resource type="PackedScene" uid="uid://rt5ayp2sfjeo" path="res://Inventory/Inventory.tscn" id="5_fkhax"]
 [ext_resource type="PackedScene" uid="uid://blir7ydrnm5pl" path="res://Items/ItemPopupHUD.tscn" id="6_x3ew0"]
+[ext_resource type="PackedScene" uid="uid://come08lkkfd3c" path="res://Globals/GameSave.tscn" id="7_mrd00"]
 
 [sub_resource type="Curve2D" id="Curve2D_mysqx"]
 _data = {
@@ -16,7 +17,7 @@ point_count = 5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiak4"]
 size = Vector2(63.9367, 64)
 
-[node name="PlayableCharacter" type="CharacterBody2D" groups=["Player"]]
+[node name="SlowBulkyCharacter" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_f0t7g")
 Speed = 300.0
 WeaponScene = ExtResource("2_w8hep")
@@ -76,6 +77,8 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(7.62939e-06, 0)
 scale = Vector2(1.00099, 1)
 shape = SubResource("RectangleShape2D_yiak4")
+
+[node name="GameSave" parent="." instance=ExtResource("7_mrd00")]
 
 [connection signal="LostAllHealth" from="HealthBar" to="." method="LostAllHealth"]
 [connection signal="timeout" from="SurvivalTimer" to="." method="SurvivalTimerTimeout"]
